@@ -2,8 +2,8 @@ package modelos;
 
 public class Comun extends Asiento{
 
-    public Comun(int numero, String ubicacion) {
-        super(numero, ubicacion);
+    public Comun(int numero) {
+        super(numero);
     }
 
     public String getTipo(){

@@ -2,21 +2,15 @@ package modelos;
 
 public abstract class Asiento {
     private int numero;
-    private String ubicacion;
     private boolean estado;
 
-    public Asiento(int numero, String ubicacion) {
+    public Asiento(int numero) {
         this.numero = numero;
-        this.ubicacion = ubicacion;
         this.estado = false;
     }
 
     public int getNumero() {
         return numero;
-    }
-
-    public String getUbicacion() {
-        return ubicacion;
     }
 
     public boolean getEstado() {

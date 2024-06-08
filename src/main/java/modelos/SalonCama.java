@@ -2,8 +2,8 @@ package modelos;
 
 public class SalonCama extends Asiento{
 
-    public SalonCama(int numero, String ubicacion) {
-        super(numero, ubicacion);
+    public SalonCama(int numero) {
+        super(numero);
     }
 
     public String getTipo(){
