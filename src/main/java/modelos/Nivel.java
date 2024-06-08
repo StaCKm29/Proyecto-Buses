@@ -2,7 +2,7 @@ package modelos;
 
 import java.util.ArrayList;
 
-public class Nivel<T> {
+public class Nivel<T extends Asiento> {
     private ArrayList<T> asientos;
 
     public Nivel(){
@@ -17,10 +17,17 @@ public class Nivel<T> {
         if(asientos.isEmpty()){
             return null;
         }else{
+            asientos.get(numAsiento-1).Ocupar();
             return asientos.get(numAsiento-1);
         }
     }
     public int asientosDisponibles(){
-        return asientos.size();
+        int asientosDisponibles = 0;
+        for(int i = 0; i < asientos.size(); i++){
+            if(asientos.get(i).getEstado() == false){
+                asientosDisponibles++;
+            }
+        }
+        return asientosDisponibles;
     }
 }

@@ -12,4 +12,9 @@ public class UnPiso extends Bus{
             primerPiso.addAsiento(asiento);
         }
     }
+    @Override
+    public Pasaje comprarPasaje(int numero){
+        return new Pasaje(primerPiso.getAsiento(numero));
+    }
+
 }
