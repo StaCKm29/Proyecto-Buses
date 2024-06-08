@@ -27,6 +27,7 @@ public abstract class Asiento {
         this.estado = true;
     }
 
+    public abstract int getPrecio();
     public abstract String getTipo();
 
 }

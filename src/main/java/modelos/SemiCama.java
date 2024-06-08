@@ -9,4 +9,8 @@ public class SemiCama extends Asiento{
         public String getTipo(){
             return "SemiCama";
         }
+
+        public int getPrecio(){
+            return 3500;
+        }
 }

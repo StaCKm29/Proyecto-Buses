@@ -10,6 +10,10 @@ public class Comun extends Asiento{
         return "Comun";
     }
 
+    public int getPrecio(){
+        return 2000;
+    }
+
 
 
 }

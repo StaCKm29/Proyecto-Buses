@@ -10,4 +10,8 @@ public class SalonCama extends Asiento{
         return "SalonCama";
     }
 
+    public int getPrecio(){
+        return 4000;
+    }
+
 }
