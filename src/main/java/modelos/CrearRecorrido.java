@@ -4,15 +4,10 @@ import java.util.ArrayList;
 
 public class CrearRecorrido {
     private ArrayList<Bus> buses;
-    private Bus bus1 = new UnPiso(TipoAsiento.COMUN);
-    private Bus bus2 = new UnPiso(TipoAsiento.SEMICAMA);
-    private Bus bus3 = new UnPiso(TipoAsiento.SALONCAMA);
-    private Bus bus4 = new DosPisos(TipoAsiento.SALONCAMA, TipoAsiento.SALONCAMA);
-    private Bus bus5 = new DosPisos(TipoAsiento.SALONCAMA, TipoAsiento.SEMICAMA);
-    private Bus bus6 = new DosPisos(TipoAsiento.SEMICAMA, TipoAsiento.SEMICAMA);
-    private Bus bus7 = new DosPisos(TipoAsiento.SEMICAMA, TipoAsiento.COMUN);
-    private Bus bus8 = new DosPisos(TipoAsiento.COMUN, TipoAsiento.COMUN);
-
+    private UnPisoFactory unPisoFactory = new UnPisoFactory();
+    private DosPisosFactory dosPisosFactory = new DosPisosFactory();
+    private EstrategiaRecorrido estrategia;
+    private Bus bus; 
     public CrearRecorrido(Localidades partida, Localidades destino) throws MismaLocalidadException {
         if(partida == destino)
             throw new MismaLocalidadException("La partida y el destino no pueden ser iguales");
@@ -20,15 +15,17 @@ public class CrearRecorrido {
         switch (partida){
             case FRUTILLAR -> {
                 switch (destino){
-                    case CHILLAN -> {
-                        // Crear recorrido
-                        Bus bus1 = new UnPiso(TipoAsiento.COMUN);
-                        buses.add(bus1);
-                        Bus bus2 = new DosPisos(TipoAsiento.SALONCAMA, TipoAsiento.SEMICAMA);
-                        buses.add(bus2);
-                    }
+                    case CHILLAN -> estrategia = new EstrategiaFrutillarChillan();
                     case CONCEPCION -> {
                         // Crear recorrido
+                        bus = dosPisosFactory.crearBus(TipoAsiento.SALONCAMA, TipoAsiento.SEMICAMA);
+                        buses.add(bus);
+                        bus = unPisoFactory.crearBus(TipoAsiento.SEMICAMA);
+                        buses.add(bus);
+                        bus = dosPisosFactory.crearBus(TipoAsiento.SALONCAMA, TipoAsiento.SALONCAMA);
+                        buses.add(bus);
+                        bus = dosPisosFactory.crearBus(TipoAsiento.COMUN, TipoAsiento.COMUN);
+                        buses.add(bus);
                     }
                     case SANTIAGO -> {
                         // Crear recorrido
