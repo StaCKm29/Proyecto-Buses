@@ -15,5 +15,18 @@ public class Pasaje {
         this.apellido = apellido;
         this.rut = rut;
     }
+
+    public Asiento getAsiento(){
+        return asiento;
+    }
+    public String getNombre(){
+        return nombre;
+    }
+    public String getApellido(){
+        return apellido;
+    }
+    public String getRut(){
+        return rut;
+    }
     
 }

@@ -13,7 +13,8 @@ public class Nivel<T extends Asiento> {
         asientos.add(asiento);
     }
 
-    public T getAsiento(int numAsiento){
+    //Este método se usara para adquirir/comprar un asiento
+    public T adquirirAsiento(int numAsiento){
         if(asientos.isEmpty()){
             return null;
         }else{
@@ -21,6 +22,15 @@ public class Nivel<T extends Asiento> {
             return asientos.get(numAsiento-1);
         }
     }
+    //Este método se usara para obtener acceso a un asiento sin ocuparlo
+    public T getAsiento(int numAsiento){
+        if(asientos.isEmpty()){
+            return null;
+        }else{
+            return asientos.get(numAsiento-1);
+        }
+    }
+
     public int asientosDisponibles(){
         int asientosDisponibles = 0;
         for(int i = 0; i < asientos.size(); i++){
