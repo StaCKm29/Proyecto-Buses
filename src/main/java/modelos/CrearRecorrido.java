@@ -7,7 +7,7 @@ public class CrearRecorrido {
     private UnPisoFactory unPisoFactory = new UnPisoFactory();
     private DosPisosFactory dosPisosFactory = new DosPisosFactory();
     private EstrategiaRecorrido estrategia;
-    private Bus bus; 
+    private Bus bus;
     public CrearRecorrido(Localidades partida, Localidades destino) throws MismaLocalidadException {
         if(partida == destino)
             throw new MismaLocalidadException("La partida y el destino no pueden ser iguales");
