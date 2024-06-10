@@ -1,4 +1,8 @@
-package modelos;
+package modelos.viajes;
+
+import modelos.Bus;
+import modelos.DosPisosFactory;
+import modelos.UnPisoFactory;
 
 import java.util.ArrayList;
 

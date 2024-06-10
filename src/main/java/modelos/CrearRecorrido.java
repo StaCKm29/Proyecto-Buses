@@ -1,12 +1,14 @@
 package modelos;
 
+import modelos.viajes.*;
+
 import java.util.ArrayList;
 
 public class CrearRecorrido {
     private ArrayList<Bus> buses;
     private UnPisoFactory unPisoFactory = new UnPisoFactory();
     private DosPisosFactory dosPisosFactory = new DosPisosFactory();
-    private EstrategiaRecorrido estrategia;
+    private EstrategiaRecorrido recorrido;
     private Bus bus;
     public CrearRecorrido(Localidades partida, Localidades destino) throws MismaLocalidadException {
         if(partida == destino)
@@ -15,60 +17,30 @@ public class CrearRecorrido {
         switch (partida){
             case FRUTILLAR -> {
                 switch (destino){
-                    case CHILLAN -> estrategia = new EstrategiaFrutillarChillan();
-                    case CONCEPCION -> {
-                        // Crear recorrido
-                        bus = dosPisosFactory.crearBus(TipoAsiento.SALONCAMA, TipoAsiento.SEMICAMA);
-                        buses.add(bus);
-                        bus = unPisoFactory.crearBus(TipoAsiento.SEMICAMA);
-                        buses.add(bus);
-                        bus = dosPisosFactory.crearBus(TipoAsiento.SALONCAMA, TipoAsiento.SALONCAMA);
-                        buses.add(bus);
-                        bus = dosPisosFactory.crearBus(TipoAsiento.COMUN, TipoAsiento.COMUN);
-                        buses.add(bus);
-                    }
-                    case SANTIAGO -> {
-                        // Crear recorrido
-                    }
+                    case CHILLAN -> recorrido = new FrutillarChillan();
+                    case CONCEPCION -> recorrido = new FrutillarConcepcion();
+                    case SANTIAGO -> recorrido = new FrutillarSantiago();
                 }
             }
             case CHILLAN -> {
                 switch (destino){
-                    case FRUTILLAR -> {
-                        // Crear recorrido
-                    }
-                    case CONCEPCION -> {
-                        // Crear recorrido
-                    }
-                    case SANTIAGO -> {
-                        // Crear recorrido
-                    }
+                    case FRUTILLAR -> recorrido = new FrutillarChillan();
+                    case CONCEPCION -> recorrido = new ChillanConcepcion();
+                    case SANTIAGO -> recorrido = new ChillanSantiago();
                 }
             }
             case CONCEPCION -> {
                 switch (destino){
-                    case FRUTILLAR -> {
-                        // Crear recorrido
-                    }
-                    case CHILLAN -> {
-                        // Crear recorrido
-                    }
-                    case SANTIAGO -> {
-                        // Crear recorrido
-                    }
+                    case FRUTILLAR -> recorrido = new FrutillarConcepcion();
+                    case CHILLAN -> recorrido = new ChillanConcepcion();
+                    case SANTIAGO -> recorrido = new SantiagoConcepcion();
                 }
             }
             case SANTIAGO -> {
                 switch (destino){
-                    case FRUTILLAR -> {
-                        // Crear recorrido
-                    }
-                    case CHILLAN -> {
-                        // Crear recorrido
-                    }
-                    case CONCEPCION -> {
-                        // Crear recorrido
-                    }
+                    case FRUTILLAR ->recorrido = new FrutillarSantiago();
+                    case CHILLAN -> recorrido = new ChillanSantiago();
+                    case CONCEPCION -> recorrido = new SantiagoConcepcion();
                 }
             }
         }
