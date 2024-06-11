@@ -6,7 +6,8 @@ public class DosPisos extends Bus{
     private int capacidadNivelUno = 12;
     private int capacidadNivelDos = 20;
 
-    public DosPisos(TipoAsiento nivelUno, TipoAsiento nivelDos){
+    public DosPisos(int precioBase, TipoAsiento nivelUno, TipoAsiento nivelDos){
+        super(precioBase);
         primerPiso = new Nivel<>();
         segundoPiso = new Nivel<>();
 
@@ -23,6 +24,22 @@ public class DosPisos extends Bus{
     }
 
     @Override
+    public int getPrecioTotal(int num){
+        int precioAsiento;
+        int precioBus;
+
+        if(num <= capacidadNivelUno){
+            precioAsiento = primerPiso.getAsiento(num).getPrecio();
+            precioBus = super.getPrecioBase();
+        }
+        else{
+            precioAsiento = segundoPiso.getAsiento(num - capacidadNivelUno).getPrecio();
+            precioBus = super.getPrecioBase();
+        }
+        return precioBus+precioAsiento;
+    }
+
+    @Override
     public Pasaje comprarPasaje(int numero){
         if(numero <= capacidadNivelUno){
             return new Pasaje(primerPiso.adquirirAsiento(numero));
@@ -31,4 +48,5 @@ public class DosPisos extends Bus{
             return new Pasaje(segundoPiso.adquirirAsiento(numero - capacidadNivelUno));
         }
     }
+
 }

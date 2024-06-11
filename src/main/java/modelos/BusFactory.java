@@ -1,5 +1,5 @@
 package modelos;
 
 public interface BusFactory {
-    Bus crearBus(TipoAsiento... asientos);
+    Bus crearBus(int precioBase, TipoAsiento... asientos);
 }

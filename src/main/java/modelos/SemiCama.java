@@ -11,6 +11,6 @@ public class SemiCama extends Asiento{
         }
 
         public int getPrecio(){
-            return 3500;
+            return 6000;
         }
 }

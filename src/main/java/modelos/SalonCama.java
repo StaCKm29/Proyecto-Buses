@@ -11,7 +11,7 @@ public class SalonCama extends Asiento{
     }
 
     public int getPrecio(){
-        return 4000;
+        return 12000;
     }
 
 }

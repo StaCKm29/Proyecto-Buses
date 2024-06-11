@@ -7,10 +7,11 @@ import java.util.ArrayList;
 public class FrutillarSantiago implements EstrategiaRecorrido{
     @Override
     public void crearRecorrido(ArrayList<Bus> buses, BusFactory busFactory, BusFactory busFactory2) {
-        buses.add(busFactory.crearBus(TipoAsiento.COMUN));
-        buses.add(busFactory2.crearBus(TipoAsiento.SALONCAMA, TipoAsiento.SEMICAMA));
-        buses.add(busFactory.crearBus(TipoAsiento.SEMICAMA));
-        buses.add(busFactory2.crearBus(TipoAsiento.SALONCAMA, TipoAsiento.SEMICAMA));
-        buses.add(busFactory.crearBus(TipoAsiento.COMUN));
+        int precioBase = 22000;
+        buses.add(busFactory.crearBus(precioBase, TipoAsiento.SEMICAMA));
+        buses.add(busFactory2.crearBus(precioBase, TipoAsiento.SALONCAMA, TipoAsiento.SEMICAMA));
+        buses.add(busFactory.crearBus(precioBase, TipoAsiento.SEMICAMA));
+        buses.add(busFactory2.crearBus(precioBase, TipoAsiento.SALONCAMA, TipoAsiento.SALONCAMA));
+        buses.add(busFactory.crearBus(precioBase, TipoAsiento.SEMICAMA));
     }
 }
