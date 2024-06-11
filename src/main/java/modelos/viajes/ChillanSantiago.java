@@ -1,19 +1,16 @@
 package modelos.viajes;
 
-import modelos.Bus;
-import modelos.DosPisosFactory;
-import modelos.TipoAsiento;
-import modelos.UnPisoFactory;
+import modelos.*;
 
 import java.util.ArrayList;
 
 public class ChillanSantiago implements EstrategiaRecorrido{
     @Override
-    public void crearRecorrido(ArrayList<Bus> buses, UnPisoFactory unPisoFactory, DosPisosFactory dosPisosFactory) {
-        buses.add(unPisoFactory.crearBus(TipoAsiento.COMUN));
-        buses.add(dosPisosFactory.crearBus(TipoAsiento.SALONCAMA, TipoAsiento.SEMICAMA));
-        buses.add(unPisoFactory.crearBus(TipoAsiento.SEMICAMA));
-        buses.add(dosPisosFactory.crearBus(TipoAsiento.SALONCAMA, TipoAsiento.SEMICAMA));
-        buses.add(unPisoFactory.crearBus(TipoAsiento.COMUN));
+    public void crearRecorrido(ArrayList<Bus> buses, BusFactory busFactory, BusFactory busFactory2) {
+        buses.add(busFactory.crearBus(TipoAsiento.COMUN));
+        buses.add(busFactory2.crearBus(TipoAsiento.SALONCAMA, TipoAsiento.SEMICAMA));
+        buses.add(busFactory.crearBus(TipoAsiento.SEMICAMA));
+        buses.add(busFactory2.crearBus(TipoAsiento.SALONCAMA, TipoAsiento.SEMICAMA));
+        buses.add(busFactory.crearBus(TipoAsiento.COMUN));
     }
 }

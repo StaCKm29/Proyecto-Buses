@@ -5,9 +5,9 @@ import modelos.viajes.*;
 import java.util.ArrayList;
 
 public class CrearRecorrido {
-    private ArrayList<Bus> buses;
-    private UnPisoFactory unPisoFactory = new UnPisoFactory();
-    private DosPisosFactory dosPisosFactory = new DosPisosFactory();
+    private ArrayList<Bus> buses = new ArrayList<Bus>();
+    private BusFactory busFactory1 = new UnPisoFactory();
+    private BusFactory busFactory2 = new DosPisosFactory();
     private EstrategiaRecorrido recorrido;
     private Bus bus;
     public CrearRecorrido(Localidades partida, Localidades destino) throws MismaLocalidadException {
@@ -44,5 +44,10 @@ public class CrearRecorrido {
                 }
             }
         }
+        recorrido.crearRecorrido(buses, busFactory1,busFactory2 );
+    }
+
+    public ArrayList<Bus> getBuses() {
+        return buses;
     }
 }
