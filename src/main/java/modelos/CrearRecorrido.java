@@ -45,6 +45,10 @@ public class CrearRecorrido {
             }
         }
         recorrido.crearRecorrido(buses, busFactory1,busFactory2 );
+        for(int i = 0; i < buses.size(); i++){
+            buses.get(i).setOrigen(partida.toString());
+            buses.get(i).setDestino(destino.toString());
+        }
     }
 
     public ArrayList<Bus> getBuses() {
