@@ -20,8 +20,7 @@ public abstract class Asiento {
     public void Ocupar(){
         this.estado = true;
     }
-
-    //public abstract int getPrecio();
+    
     public abstract String getTipo();
 
 }
