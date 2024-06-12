@@ -45,10 +45,10 @@ public class DosPisos extends Bus{
     @Override
     public Pasaje comprarPasaje(int numero, int precioTotal){
         if(numero <= capacidadNivelUno){
-            return new Pasaje(primerPiso.adquirirAsiento(numero), precioTotal);
+            return new Pasaje(primerPiso.adquirirAsiento(numero), precioTotal, getOrigen(), getDestino());
         }
         else{
-            return new Pasaje(segundoPiso.adquirirAsiento(numero - capacidadNivelUno), precioTotal);
+            return new Pasaje(segundoPiso.adquirirAsiento(numero - capacidadNivelUno), precioTotal, getOrigen(), getDestino());
         }
     }
 
