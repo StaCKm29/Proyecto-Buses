@@ -1,12 +1,17 @@
 package modelos;
 
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 public abstract class Bus {
     private int patente;
     private int capacidad;
     private int precioBase;
     private String origen;
     private String destino;
+    private LocalTime horaSalida;
+    private LocalDate fechaSalida;
 
     public Bus(int precioBase){
         this.precioBase = precioBase;
@@ -29,5 +34,11 @@ public abstract class Bus {
     }
     public String getDestino(){
         return destino;
+    }
+    public void setHoraSalida(LocalTime horaSalida){
+        this.horaSalida = horaSalida;
+    }
+    public void setFechaSalida(LocalDate fechaSalida){
+        this.fechaSalida = fechaSalida;
     }
 }

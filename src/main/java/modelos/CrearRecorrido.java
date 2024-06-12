@@ -2,6 +2,9 @@ package modelos;
 
 import modelos.viajes.*;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
 public class CrearRecorrido {
@@ -48,6 +51,19 @@ public class CrearRecorrido {
         for(int i = 0; i < buses.size(); i++){
             buses.get(i).setOrigen(partida.toString());
             buses.get(i).setDestino(destino.toString());
+        }
+
+        LocalTime horaActual = LocalTime.now().truncatedTo(ChronoUnit.HOURS);
+        LocalDate fechaActual = LocalDate.now();
+
+        for (int i = 0; i < buses.size(); i++) {
+            LocalTime nuevaHora = horaActual.plusHours(2 * i);
+            if (nuevaHora.isBefore(horaActual)) { // Si la nueva hora es antes que la hora actual, ha pasado un día
+                fechaActual = fechaActual.plusDays(1);
+            }
+            buses.get(i).setHoraSalida(nuevaHora);
+            buses.get(i).setFechaSalida(fechaActual);
+            horaActual = nuevaHora;
         }
     }
 
