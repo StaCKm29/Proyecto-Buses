@@ -9,9 +9,4 @@ public class SalonCama extends Asiento{
     public String getTipo(){
         return "SalonCama";
     }
-
-    public int getPrecio(){
-        return 12000;
-    }
-
 }

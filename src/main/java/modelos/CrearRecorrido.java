@@ -5,11 +5,11 @@ import modelos.viajes.*;
 import java.util.ArrayList;
 
 public class CrearRecorrido {
-    private ArrayList<Bus> buses = new ArrayList<Bus>();
+    private ArrayList<Bus> buses = new ArrayList<>();
     private BusFactory busFactory1 = new UnPisoFactory();
     private BusFactory busFactory2 = new DosPisosFactory();
     private EstrategiaRecorrido recorrido;
-    private Bus bus;
+
     public CrearRecorrido(Localidades partida, Localidades destino) throws MismaLocalidadException {
         if(partida == destino)
             throw new MismaLocalidadException("La partida y el destino no pueden ser iguales");

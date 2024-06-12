@@ -10,7 +10,7 @@ public abstract class Bus {
         this.precioBase = precioBase;
     }
 
-    public abstract Pasaje comprarPasaje(int numero);
+    public abstract Pasaje comprarPasaje(int numero, int precioTotal);
     public abstract int getPrecioTotal(int num);
 
     protected int getPrecioBase() {

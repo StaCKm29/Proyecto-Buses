@@ -9,11 +9,4 @@ public class Comun extends Asiento{
     public String getTipo(){
         return "Comun";
     }
-
-    public int getPrecio(){
-        return 2000;
-    }
-
-
-
 }
