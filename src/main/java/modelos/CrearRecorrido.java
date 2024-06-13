@@ -6,13 +6,21 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
-
+/**
+ * Clase que crea una lista de buses para un recorrido.
+ */
 public class CrearRecorrido {
     private ArrayList<Bus> buses = new ArrayList<>();
     private BusFactory busFactory1 = new UnPisoFactory();
     private BusFactory busFactory2 = new DosPisosFactory();
     private EstrategiaRecorrido recorrido;
-
+    /**
+     * Constructor de la clase CrearRecorrido.
+     * @param partida Localidad de partida.
+     * @param destino Localidad de destino.
+     * @param fechaViaje Fecha de viaje.
+     * @throws MismaLocalidadException Si la partida y el destino son iguales.
+     */
     public CrearRecorrido(Localidades partida, Localidades destino, LocalDate fechaViaje) throws MismaLocalidadException {
         if(partida == destino)
             throw new MismaLocalidadException("La partida y el destino no pueden ser iguales");
@@ -67,7 +75,10 @@ public class CrearRecorrido {
             horaActual = nuevaHora;
         }
     }
-
+    /**
+     * Método que retorna la lista de buses.
+     * @return Lista de buses.
+     */
     public ArrayList<Bus> getBuses() {
         return buses;
     }

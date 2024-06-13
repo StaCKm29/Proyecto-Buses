@@ -1,5 +1,7 @@
 package modelos;
-
+/**
+ * Enumeración que representa los tipos de asientos disponibles.
+ */
 public enum TipoAsiento {
     COMUN(2000){
         @Override
@@ -35,14 +37,23 @@ public enum TipoAsiento {
         }*/
     };
     private final int precio;
-
+    /**
+     * Constructor de la enumeración TipoAsiento.
+     * @param precio Precio del asiento.
+     */
     TipoAsiento(int precio){
         this.precio = precio;
     }
-
+    /**
+     * Método que crea un asiento.
+     * @param numAsiento Número del asiento.
+     * @return Asiento creado.
+     */
     public abstract Asiento crearAsiento(int numAsiento);
-    //public abstract Asiento getAsiento(int numAsiento);
-
+    /**
+     * Método que retorna el precio del asiento.
+     * @return Precio del asiento.
+     */
     public int getPrecio() {
         return precio;
     }
