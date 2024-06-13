@@ -13,7 +13,7 @@ public class CrearRecorrido {
     private BusFactory busFactory2 = new DosPisosFactory();
     private EstrategiaRecorrido recorrido;
 
-    public CrearRecorrido(Localidades partida, Localidades destino) throws MismaLocalidadException {
+    public CrearRecorrido(Localidades partida, Localidades destino, LocalDate fechaViaje) throws MismaLocalidadException {
         if(partida == destino)
             throw new MismaLocalidadException("La partida y el destino no pueden ser iguales");
 
@@ -47,17 +47,18 @@ public class CrearRecorrido {
                 }
             }
         }
+
         recorrido.crearRecorrido(buses, busFactory1,busFactory2 );
         for(int i = 0; i < buses.size(); i++){
             buses.get(i).setOrigen(partida.toString());
             buses.get(i).setDestino(destino.toString());
         }
 
-        LocalTime horaActual = LocalTime.now().truncatedTo(ChronoUnit.HOURS);
-        LocalDate fechaActual = LocalDate.now();
+        LocalTime horaActual = LocalTime.now().truncatedTo(ChronoUnit.MINUTES);
+        LocalDate fechaActual = fechaViaje;
 
         for (int i = 0; i < buses.size(); i++) {
-            LocalTime nuevaHora = horaActual.plusHours(2 * i);
+            LocalTime nuevaHora = horaActual.plusHours(2 * (i+1));
             if (nuevaHora.isBefore(horaActual)) { // Si la nueva hora es antes que la hora actual, ha pasado un día
                 fechaActual = fechaActual.plusDays(1);
             }
