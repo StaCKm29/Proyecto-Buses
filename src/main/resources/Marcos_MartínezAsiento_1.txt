@@ -1,0 +1,10 @@
+Origen: Frutillar
+Destino: Santiago
+Nombre: MarcosMartínez
+Rut: 21.351.870-4
+Asiento: 1
+Precio: 28000
+Hora de salida: 21:13
+Fecha de salida: 2024-06-14
+Recuerde llegar al terminal con 15 minutos de anticipación
+Gracias por preferirnos

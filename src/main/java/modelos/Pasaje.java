@@ -22,6 +22,8 @@ public class Pasaje {
         this.precioTotal = precioTotal;
         this.origen = origen;
         this.destino = destino;
+        this.horaSalida = horaSalida;
+        this.fechaSalida = fechaSalida;
     }
 
     public void setDatos(String nombre, String apellido, String rut){
@@ -47,7 +49,7 @@ public class Pasaje {
     }
     public void generarPasajeTxt(){
         try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter(nombre + "_" + apellido + "Asiento_"+ asiento.getNumero() + ".txt"));
+            BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/resources/" + nombre + "_" + apellido + "Asiento_"+ asiento.getNumero() + ".txt"));
             writer.write("Origen: " + origen + "\n");
             writer.write("Destino: " + destino + "\n");
             writer.write("Nombre: " + nombre + apellido + "\n");

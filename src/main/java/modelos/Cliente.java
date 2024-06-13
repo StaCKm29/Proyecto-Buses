@@ -14,6 +14,7 @@ public class Cliente {
             Pasaje pasaje = bus.comprarPasaje(numAsientos.get(i), precioTotal);
             pasaje.setDatos(nombre, apellido, rut);
             pasajes.add(pasaje);
+            pasaje.generarPasajeTxt();
         }
     }
 
