@@ -41,4 +41,10 @@ public abstract class Bus {
     public void setFechaSalida(LocalDate fechaSalida){
         this.fechaSalida = fechaSalida;
     }
+    public LocalTime getHoraSalida(){
+        return horaSalida;
+    }
+    public LocalDate getFechaSalida(){
+        return fechaSalida;
+    }
 }

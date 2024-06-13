@@ -3,6 +3,8 @@ package modelos;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 public class Pasaje {
     private Asiento asiento;
@@ -11,9 +13,11 @@ public class Pasaje {
     private String rut;
     private String origen;
     private String destino;
+    private LocalTime horaSalida;
+    private LocalDate fechaSalida;
     private int precioTotal;
 
-    public Pasaje(Asiento asiento, int precioTotal, String origen, String destino){
+    public Pasaje(Asiento asiento, int precioTotal, String origen, String destino, LocalTime horaSalida, LocalDate fechaSalida){
         this.asiento = asiento;
         this.precioTotal = precioTotal;
         this.origen = origen;
@@ -50,6 +54,11 @@ public class Pasaje {
             writer.write("Rut: " + rut + "\n");
             writer.write("Asiento: " + asiento.getNumero() + "\n");
             writer.write("Precio: " + precioTotal + "\n");
+            writer.write("Hora de salida: " + horaSalida.toString() + "\n");
+            writer.write("Fecha de salida: " + fechaSalida.toString() + "\n");
+            writer.write("Recuerde llegar al terminal con 15 minutos de anticipación\n");
+            writer.write("Gracias por preferirnos");
+            writer.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
