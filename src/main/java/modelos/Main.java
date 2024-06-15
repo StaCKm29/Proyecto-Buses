@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Main {
-    public static void main(String[] args) throws MismaLocalidadException {
+    public static void main(String[] args) throws MismaLocalidadException, LocalidadNullException {
         LocalDate fechaViaje = LocalDate.of(2024, 06, 14);
         Localidades partida = Localidades.FRUTILLAR;
         Localidades destino = Localidades.SANTIAGO;

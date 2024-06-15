@@ -13,9 +13,12 @@ public class CrearRecorrido {
     private BusFactory busFactory2 = new DosPisosFactory();
     private EstrategiaRecorrido recorrido;
 
-    public CrearRecorrido(Localidades partida, Localidades destino, LocalDate fechaViaje) throws MismaLocalidadException {
-        if(partida == destino)
+    public CrearRecorrido(Localidades partida, Localidades destino, LocalDate fechaViaje) throws MismaLocalidadException, LocalidadNullException {
+        if(partida == null || destino == null) {
+            throw new LocalidadNullException("La partida y el destino no pueden ser nulos");
+        }else if(partida == destino) {
             throw new MismaLocalidadException("La partida y el destino no pueden ser iguales");
+        }
 
         switch (partida){
             case FRUTILLAR -> {
