@@ -13,6 +13,14 @@ public class CrearRecorrido {
     private BusFactory busFactory2 = new DosPisosFactory();
     private EstrategiaRecorrido recorrido;
 
+    /**
+     * Constructor de la clase CrearRecorrido.
+     * @param partida Localidad de partida.
+     * @param destino Localidad de destino.
+     * @param fechaViaje Fecha de viaje.
+     * @throws MismaLocalidadException Si la partida y el destino son iguales.
+     * @throws LocalidadNullException Si alguna localidad no ha sido instanciada aún.
+     */
     public CrearRecorrido(Localidades partida, Localidades destino, LocalDate fechaViaje) throws MismaLocalidadException, LocalidadNullException {
         if(partida == null || destino == null) {
             throw new LocalidadNullException("La partida y el destino no pueden ser nulos");
@@ -70,7 +78,10 @@ public class CrearRecorrido {
             horaActual = nuevaHora;
         }
     }
-
+    /**
+     * Método que retorna la lista de buses.
+     * @return Lista de buses.
+     */
     public ArrayList<Bus> getBuses() {
         return buses;
     }

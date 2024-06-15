@@ -1,5 +1,7 @@
 package modelos;
-
+/**
+ * Clase que representa un bus de dos pisos.
+ */
 public class DosPisos extends Bus{
     private Nivel<Asiento> primerPiso;
     private Nivel<Asiento> segundoPiso;
@@ -7,7 +9,12 @@ public class DosPisos extends Bus{
     private int capacidadNivelDos = 20;
     private TipoAsiento nivelUno;
     private TipoAsiento nivelDos;
-
+    /**
+     * Constructor de la clase DosPisos.
+     * @param precioBase Precio base del bus.
+     * @param nivelUno Tipo de asiento del primer piso.
+     * @param nivelDos Tipo de asiento del segundo piso.
+     */
     public DosPisos(int precioBase, TipoAsiento nivelUno, TipoAsiento nivelDos){
         super(precioBase);
         primerPiso = new Nivel<>();
@@ -25,7 +32,11 @@ public class DosPisos extends Bus{
             segundoPiso.addAsiento(asiento);
         }
     }
-
+    /**
+     * Método que retorna el precio total de un pasaje.
+     * @param num Número del asiento.
+     * @return Precio total.
+     */
     @Override
     public int getPrecioTotal(int num){
         int precioAsiento;
@@ -41,7 +52,10 @@ public class DosPisos extends Bus{
         }
         return precioBus+precioAsiento;
     }
-
+    /**
+     * Método que retorna un pasaje comprado con datos del bus.
+     * @return Nuevo pasaje.
+     */
     @Override
     public Pasaje comprarPasaje(int numero, int precioTotal){
         if(numero <= capacidadNivelUno){
