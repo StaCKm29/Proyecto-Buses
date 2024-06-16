@@ -4,7 +4,6 @@ import modelos.Asiento;
 import modelos.Bus;
 
 import javax.swing.*;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class SeleccionDeAsiento extends JPanel {
@@ -15,6 +14,14 @@ public class SeleccionDeAsiento extends JPanel {
         //Asi saber como llamar al metodo de bus.getAsientos(1 0 2)
         //Si es de un piso, se debe mostrar un solo panel con los asientos
         //Si es de dos pisos, se deben mostrar dos paneles con los asientos
+        if(busSeleccionado.getClass() == modelos.UnPiso.class) {
+            AsientosDelBus = busSeleccionado.getAsientos(1);
+            for (Asiento asiento : AsientosDelBus) {
+                add(new JButton("Asiento " + asiento.getNumero()));
+            }
+        } else {
+
+        }
 
 
     }
