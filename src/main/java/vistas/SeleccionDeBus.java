@@ -6,27 +6,35 @@ import javax.swing.*;
 import java.awt.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.List;
 
 public class SeleccionDeBus extends JPanel {
+    private JPanel panelActual;
 
     public SeleccionDeBus(ArrayList<Bus> buses) {
         setLayout(new FlowLayout());
 
+        this.panelActual = new JPanel();
         JList<Bus> busesDisponibles = new JList<>(buses.toArray(new Bus[0]));
-        //JComboBox<Bus> busesDisponibles = new JComboBox<>();
-        //buses.forEach(busesDisponibles::addItem);
 
         JButton seleccionar = new JButton("Seleccionar");
         seleccionar.addActionListener(e -> {
-            Bus bus = (Bus) busesDisponibles.getSelectedValue();
+            Bus bus = busesDisponibles.getSelectedValue();
             JOptionPane.showMessageDialog(this, "Bus seleccionado: " + bus);
+            /*
+            // Crea un nuevo panel
+            SeleccionDeAsiento nuevaVentana = new SeleccionDeAsiento();
+
+            // Remueve el panel actual y agrega el nuevo
+            this.panelActual.removeAll();
+            this.panelActual.add(nuevaVentana);
+            this.panelActual.revalidate();
+            this.panelActual.repaint();*/
         });
 
         //add(busesDisponibles);
+        add(panelActual);
         add(new JScrollPane(busesDisponibles));
         add(seleccionar);
-
     }
 
     public static void main(String args[]) throws MismaLocalidadException, LocalidadNullException {

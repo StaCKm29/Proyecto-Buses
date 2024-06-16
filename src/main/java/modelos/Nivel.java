@@ -59,4 +59,8 @@ public class Nivel<T extends Asiento> {
         }
         return asientosDisponibles;
     }
+
+    public ArrayList<T> getArrayAsientos(){
+        return asientos;
+    }
 }

@@ -12,6 +12,8 @@ public class MenuDestino extends JPanel implements ItemListener {
     private Localidades localidad;
 
     public MenuDestino() {
+        JLabel nombre = new JLabel("Destino: ");
+        add(nombre);
         destino = new Choice();
 
         destino.add("Frutillar");
@@ -45,7 +47,7 @@ public class MenuDestino extends JPanel implements ItemListener {
         }
     }
 
-    public Localidades getLocalidad() {
+    public Localidades getDestino() {
         return localidad;
     }
 }

@@ -12,6 +12,8 @@ public class MenuOrigen extends JPanel implements ItemListener {
     private Localidades localidad;
 
     public MenuOrigen() {
+        JLabel nombre = new JLabel("Origen: ");
+        add(nombre);
         origen = new Choice();
 
         origen.add("Frutillar");
@@ -44,7 +46,7 @@ public class MenuOrigen extends JPanel implements ItemListener {
             }
         }
     }
-    public Localidades getLocalidad() {
+    public Localidades getOrigen() {
         return localidad;
     }
 }

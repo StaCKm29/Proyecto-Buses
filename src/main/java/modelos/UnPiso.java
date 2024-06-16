@@ -1,4 +1,7 @@
 package modelos;
+
+import java.util.ArrayList;
+
 /**
  * Clase que representa un bus de un piso.
  */
@@ -43,5 +46,15 @@ public class UnPiso extends Bus{
         return new Pasaje(primerPiso.adquirirAsiento(numero), precioTotal, getOrigen(), getDestino(), getHoraSalida(), getFechaSalida());
     }
 
+    @Override
+    public ArrayList<Asiento> getAsientos(int numero) {
+        return primerPiso.getArrayAsientos();
+    }
+
+    @Override
+    public String toString() {
+        int precioTotal = getPrecioTotal(1);
+        return "BUS UN PISO: " + nivelUno.toString() + super.toString() + " Desde: $" + precioTotal;
+    }
 }
 

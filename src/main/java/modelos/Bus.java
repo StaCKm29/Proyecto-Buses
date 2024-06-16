@@ -3,6 +3,7 @@ package modelos;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 
 /**
  * Clase abstracta Bus que representa un bus.
@@ -98,4 +99,12 @@ public abstract class Bus {
     public LocalDate getFechaSalida(){
         return fechaSalida;
     }
+
+    @Override
+    public String toString(){
+        return ", Hora de Salida=" + horaSalida +
+                ", Fecha de Salida=" + fechaSalida;
+    }
+
+    public abstract ArrayList<Asiento> getAsientos(int numeroNivel);
 }

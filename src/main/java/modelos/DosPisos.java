@@ -1,4 +1,7 @@
 package modelos;
+
+import java.util.ArrayList;
+
 /**
  * Clase que representa un bus de dos pisos.
  */
@@ -64,6 +67,24 @@ public class DosPisos extends Bus{
         else{
             return new Pasaje(segundoPiso.adquirirAsiento(numero - capacidadNivelUno), precioTotal, getOrigen(), getDestino(), getHoraSalida(), getFechaSalida());
         }
+    }
+
+    @Override
+    public ArrayList<Asiento> getAsientos(int numeroNivel){
+        if(numeroNivel == 1)
+            return primerPiso.getArrayAsientos();
+        else
+            return segundoPiso.getArrayAsientos();
+    }
+
+    @Override
+    public String toString() {
+        int precioTotal;
+        if(getPrecioTotal(1) > getPrecioTotal(16))
+            precioTotal = getPrecioTotal(13);
+        else
+            precioTotal = getPrecioTotal(1);
+        return "BUS DOS PISOS: " + nivelUno.toString() + " Y " + nivelDos.toString() + super.toString() + " Desde: $" + precioTotal;
     }
 
 }
