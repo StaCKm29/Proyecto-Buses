@@ -4,6 +4,7 @@ import modelos.Asiento;
 import modelos.TipoAsiento;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -16,13 +17,16 @@ public class ImageAsiento extends JPanel implements MouseListener {
     private boolean seleccionado;
 
     public ImageAsiento(Asiento asiento) {
+        int ancho = 20;
+        int alto = 20;
+
         this.asiento = asiento;
         this.seleccionado = false; // Inicialmente no seleccionado
 
         // Cargar las imágenes de los iconos
-        iconDisponible = new ImageIcon(getClass().getResource("/AsientoDisponible.png"));
-        iconOcupado = new ImageIcon(getClass().getResource("/AsientoOcupado.png"));
-        iconSeleccionado = new ImageIcon(getClass().getResource("/AsientoSeleccionado.png"));
+        iconDisponible = new ImageIcon(new ImageIcon(getClass().getResource("/AsientoDisponible.png")).getImage().getScaledInstance(ancho, alto, Image.SCALE_DEFAULT));
+        iconOcupado = new ImageIcon(new ImageIcon(getClass().getResource("/AsientoOcupado.png")).getImage().getScaledInstance(ancho, alto, Image.SCALE_DEFAULT));
+        iconSeleccionado = new ImageIcon(new ImageIcon(getClass().getResource("/AsientoSeleccionado.png")).getImage().getScaledInstance(ancho, alto, Image.SCALE_DEFAULT));
 
         // Configurar el icono inicial basado en el estado del asiento
         label = new JLabel();
@@ -60,6 +64,8 @@ public class ImageAsiento extends JPanel implements MouseListener {
 
     @Override
     public void mouseEntered(MouseEvent e) {
+        JOptionPane.showMessageDialog(null,"Asiento " + asiento.getNumero() + "\n"
+                + "Tipo de asiento: " + asiento.getTipo());
     }
 
     @Override
