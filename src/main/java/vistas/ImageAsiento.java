@@ -7,8 +7,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 
 public class ImageAsiento extends JPanel implements MouseListener {
+    private ArrayList<Integer> asientosSeleccionados;
     private ImageIcon iconDisponible;
     private ImageIcon iconOcupado;
     private ImageIcon iconSeleccionado;
@@ -16,12 +18,13 @@ public class ImageAsiento extends JPanel implements MouseListener {
     private JLabel label;
     private boolean seleccionado;
 
-    public ImageAsiento(Asiento asiento) {
+    public ImageAsiento(Asiento asiento, ArrayList<Integer> asientosSeleccionados) {
         int ancho = 20;
         int alto = 20;
 
         this.asiento = asiento;
         this.seleccionado = false; // Inicialmente no seleccionado
+        this.asientosSeleccionados = asientosSeleccionados;
 
         // Cargar las imágenes de los iconos
         iconDisponible = new ImageIcon(new ImageIcon(getClass().getResource("/AsientoDisponible.png")).getImage().getScaledInstance(ancho, alto, Image.SCALE_DEFAULT));
@@ -51,6 +54,11 @@ public class ImageAsiento extends JPanel implements MouseListener {
         if (!asiento.getEstado()) {
             seleccionado = !seleccionado; // Alternar el estado seleccionado
             updateIcon(); // Actualizar el icono en función del nuevo estado
+            if (seleccionado) {
+                asientosSeleccionados.add(asiento.getNumero());
+            } else {
+                asientosSeleccionados.remove(asiento.getNumero());
+            }
         }
     }
 
@@ -64,8 +72,8 @@ public class ImageAsiento extends JPanel implements MouseListener {
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        JOptionPane.showMessageDialog(null,"Asiento " + asiento.getNumero() + "\n"
-                + "Tipo de asiento: " + asiento.getTipo());
+        /*JOptionPane.showMessageDialog(null,"Asiento " + asiento.getNumero() + "\n"
+                + "Tipo de asiento: " + asiento.getTipo());*/
     }
 
     @Override
@@ -78,7 +86,7 @@ public class ImageAsiento extends JPanel implements MouseListener {
         frame.setSize(400, 200);
         Asiento semicama = TipoAsiento.SEMICAMA.crearAsiento(1);
 
-        ImageAsiento imageAsiento = new ImageAsiento(semicama);
+        ImageAsiento imageAsiento = new ImageAsiento(semicama, new ArrayList<>());
         frame.add(imageAsiento);
 
         frame.setVisible(true);

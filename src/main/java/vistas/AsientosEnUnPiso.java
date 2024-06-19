@@ -11,6 +11,8 @@ import java.util.ArrayList;
 
 public class AsientosEnUnPiso extends JPanel {
     private ArrayList<Asiento> asientos;
+    private ArrayList<ImageAsiento>  asientosgraficos;
+    private ArrayList<Integer> asientosSeleccionados = new ArrayList<>();
     private static final int WIDTH = 20;
     private static final int HEIGHT = 20;
     private Image asientoDisponible;
@@ -18,37 +20,54 @@ public class AsientosEnUnPiso extends JPanel {
 
     public AsientosEnUnPiso(ArrayList<Asiento> asientos) {
         this.asientos = asientos;
-        asientoDisponible = new ImageIcon(getClass().getResource("/AsientoDisponible.png")).getImage();
-        asientoOcupado = new ImageIcon(getClass().getResource("/AsientoOcupado.png")).getImage();
-        // Escalar las imágenes
-        asientoDisponible = asientoDisponible.getScaledInstance(WIDTH, HEIGHT, Image.SCALE_SMOOTH);
-        asientoOcupado = asientoOcupado.getScaledInstance(WIDTH, HEIGHT, Image.SCALE_SMOOTH);
+        //Creacion de arreglo gráfico
+        this.asientosgraficos = new ArrayList<ImageAsiento>();
+        for(Asiento asiento: asientos){
+            ImageAsiento asientoGrafico = new ImageAsiento(asiento , asientosSeleccionados);
+            asientosgraficos.add(asientoGrafico);
+        }
+
+        //Se crea panel contenedor de los asientos
+        JPanel columna1 = new JPanel();
+        JPanel columna2 = new JPanel();
+        JPanel pasillo = new JPanel();
+        JPanel columna3 = new JPanel();
+        columna1.setLayout(new GridLayout(asientos.size()/3, 1));
+        columna2.setLayout(new GridLayout(asientos.size()/3, 1));
+        pasillo.setLayout(new GridLayout(asientos.size()/3, 1));
+        columna3.setLayout(new GridLayout(asientos.size()/3, 1));
+        Image pasilloImage = new ImageIcon(getClass().getResource("/pasillo.png")).getImage().getScaledInstance(20,20, Image.SCALE_SMOOTH);
+        //Se agregan los asientos al panel contenedor
+        for(int i = 0; i < asientosgraficos.size(); i++){
+            columna1.add(asientosgraficos.get(i));
+            i++;
+            columna2.add(asientosgraficos.get(i));
+            i++;
+            pasillo.add(new JLabel(new ImageIcon(pasilloImage)));
+            columna3.add(asientosgraficos.get(i));
+        }
+
+        //Se agregan los paneles al contenedor
+        JPanel contenedor = new JPanel();
+        contenedor.setLayout(new GridLayout(1, 4));
+        contenedor.add(columna1);
+        contenedor.add(columna2);
+        contenedor.add(pasillo);
+        contenedor.add(columna3);
+        JPanel panel = new JPanel();
+        panel.setLayout(new BorderLayout());
+        panel.add(new JLabel("Piso 1"), BorderLayout.NORTH);
+        panel.add(contenedor, BorderLayout.CENTER);
+        add(panel);
     }
 
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        Graphics2D g2d = (Graphics2D) g;
-        int x = 10; // coordenada inicial x
-        int y = 10; // coordenada inicial y
-        int padding = 10; // espacio entre los asientos
-        int asientosPorFila = asientos.size() / 2; // cantidad de asientos por fila
-        int asientoActual = 0; // contador de asientos
-
-        for (Asiento asiento : asientos) {
-            Image img = asiento.getEstado() ? asientoOcupado : asientoDisponible;
-            g2d.drawImage(img, x, y, this);
-            y += HEIGHT + padding; // mover hacia abajo para el próximo asiento
-            asientoActual++; // incrementar el contador de asientos
-
-            // Si se ha alcanzado la cantidad de asientos por fila, comenzar una nueva fila
-            if (asientoActual == asientosPorFila) {
-                asientoActual = 0;
-                y = 10;
-                x += WIDTH + padding; // mover hacia la derecha para la próxima columna
-            }
-        }
     }
+
+
+
     public static void main(String[] args) {
         JFrame frame = new JFrame("Asientos en un piso");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -56,8 +75,8 @@ public class AsientosEnUnPiso extends JPanel {
 
         Bus bus = new UnPiso(4000, TipoAsiento.SEMICAMA);
         ArrayList<Asiento> asientos = bus.getAsientos(1);
-        asientos.get(3).Ocupar();
-        asientos.get(5).Ocupar();
+        asientos.get(0).Ocupar();
+        asientos.get(26).Ocupar();
 
         AsientosEnUnPiso asientosEnUnPiso = new AsientosEnUnPiso(asientos);
         frame.add(asientosEnUnPiso);

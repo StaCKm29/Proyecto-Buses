@@ -6,19 +6,14 @@ import modelos.TipoAsiento;
 import modelos.UnPiso;
 
 import javax.swing.*;
-import java.awt.*;
 import java.util.ArrayList;
 
 public class SeleccionDeAsiento extends JPanel {
     private ArrayList<Asiento> AsientosDelBus;
 
         public SeleccionDeAsiento(Bus busSeleccionado) {
-            setLayout(new GridLayout(1, 2));
-
-            JPanel panel1 = new JPanel();
-            panel1.setLayout(new BoxLayout(panel1, BoxLayout.Y_AXIS));
-            JPanel panel2 = new JPanel();
-            panel2.setLayout(new BoxLayout(panel2, BoxLayout.Y_AXIS));
+            /*
+            setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 
             AsientosDelBus = busSeleccionado.getAsientos(1);
             int half = (AsientosDelBus.size() + 1) / 2; // Si el número de asientos es impar, el primer arreglo tendrá un asiento más que el segundo
@@ -33,9 +28,9 @@ public class SeleccionDeAsiento extends JPanel {
                 asiento.setBounds(0,0,20,20);
                 panel2.add(asiento);
             }
+            add(new JLabel("Piso 1"));
 
-            add(panel1);
-            add(panel2);
+             */
         }
 
         // Resto del código...

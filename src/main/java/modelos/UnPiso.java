@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class UnPiso extends Bus{
     private Nivel<Asiento> primerPiso;
     private TipoAsiento nivelUno;
-    private int capacidadNivelUno = 20;
+    private int capacidadNivelUno = 27;
     /**
      * Constructor de la clase UnPiso.
      * @param precioBase Precio base del bus.
