@@ -8,8 +8,8 @@ import java.util.ArrayList;
 public class DosPisos extends Bus{
     private Nivel<Asiento> primerPiso;
     private Nivel<Asiento> segundoPiso;
-    private int capacidadNivelUno = 12;
-    private int capacidadNivelDos = 20;
+    private int capacidadNivelUno = 15;
+    private int capacidadNivelDos = 30;
     private TipoAsiento nivelUno;
     private TipoAsiento nivelDos;
     /**

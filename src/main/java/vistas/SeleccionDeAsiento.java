@@ -12,6 +12,7 @@ public class SeleccionDeAsiento extends JPanel {
     private ArrayList<Asiento> AsientosDelBus;
 
         public SeleccionDeAsiento(Bus busSeleccionado) {
+            /*
             setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 
             AsientosDelBus = busSeleccionado.getAsientos(1);
@@ -26,6 +27,8 @@ public class SeleccionDeAsiento extends JPanel {
                 asiento.setBounds(0,0,20,20);
             }
             add(new JLabel("Piso 1"));
+
+             */
         }
 
         // Resto del código...
