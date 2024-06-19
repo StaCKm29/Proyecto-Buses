@@ -29,7 +29,7 @@ public abstract class Bus {
      * Método que retorna un pasaje comprado con datos del bus.
      * @return Nuevo pasaje.
      */
-    public abstract Pasaje comprarPasaje(int numero, int precioTotal);
+    public abstract Pasaje comprarPasaje(int numero, int precioTotal, Bus bus);
     /**
      * Método que retorna el precio total de un pasaje.
      * @param num Número del asiento.

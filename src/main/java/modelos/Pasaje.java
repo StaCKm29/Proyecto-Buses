@@ -22,18 +22,15 @@ public class Pasaje {
      * Constructor de la clase Pasaje.
      * @param asiento Asiento del pasaje.
      * @param precioTotal Precio total del pasaje.
-     * @param origen Origen del recorrido.
-     * @param destino Destino del recorrido.
-     * @param horaSalida Hora de salida del pasaje.
-     * @param fechaSalida Fecha de salida del pasaje.
+     * @param bus Bus del pasaje.
      */
-    public Pasaje(Asiento asiento, int precioTotal, String origen, String destino, LocalTime horaSalida, LocalDate fechaSalida){
+    public Pasaje(Asiento asiento, int precioTotal, Bus bus){
         this.asiento = asiento;
         this.precioTotal = precioTotal;
-        this.origen = origen;
-        this.destino = destino;
-        this.horaSalida = horaSalida;
-        this.fechaSalida = fechaSalida;
+        this.origen = bus.getOrigen();
+        this.destino = bus.getDestino();
+        this.horaSalida = bus.getHoraSalida();
+        this.fechaSalida = bus.getFechaSalida();
     }
     /**
      * Método que establece los datos del pasajero.

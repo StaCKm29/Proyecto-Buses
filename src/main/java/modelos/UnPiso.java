@@ -42,8 +42,8 @@ public class UnPiso extends Bus{
      * @return Pasaje nuevo.
      */
     @Override
-    public Pasaje comprarPasaje(int numero, int precioTotal){
-        return new Pasaje(primerPiso.adquirirAsiento(numero), precioTotal, getOrigen(), getDestino(), getHoraSalida(), getFechaSalida());
+    public Pasaje comprarPasaje(int numero, int precioTotal, Bus bus){
+        return new Pasaje(primerPiso.adquirirAsiento(numero), precioTotal, bus);
     }
 
     @Override

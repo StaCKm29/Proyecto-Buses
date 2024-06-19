@@ -7,12 +7,15 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class PasajeTest {
     private Pasaje pasaje;
-    private int precioTotal = 2000;
+    private int precioTotal = 10000;
+    private BusFactory busFactory;
+    private Bus bus;
 
     @BeforeEach
     void setUp() {
+        bus = busFactory.crearBus(precioTotal, TipoAsiento.SALONCAMA, TipoAsiento.SEMICAMA);
         SalonCama asiento1 = new SalonCama(1);
-        pasaje = new Pasaje(asiento1, precioTotal);
+        pasaje = new Pasaje(asiento1, precioTotal, bus);
     }
 
     /*

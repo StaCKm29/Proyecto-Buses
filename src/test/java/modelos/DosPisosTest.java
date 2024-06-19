@@ -28,7 +28,7 @@ class DosPisosTest {
     @DisplayName("Test para comprar un pasaje")
     void comprarPasaje(){
         int precioTotal = bus.getPrecioTotal(3);
-        Pasaje pasaje1 = bus.comprarPasaje(1, precioTotal);
+        Pasaje pasaje1 = bus.comprarPasaje(1, precioTotal, bus);
         //true significa que el asiento esta ocupado.
         assertEquals(true, pasaje1.getAsiento().getEstado());
     }

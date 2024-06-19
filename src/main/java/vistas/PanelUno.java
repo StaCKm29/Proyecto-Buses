@@ -2,6 +2,7 @@ package vistas;
 
 import modelos.CrearRecorrido;
 import modelos.LocalidadNullException;
+import modelos.Localidades;
 import modelos.MismaLocalidadException;
 
 import javax.swing.*;
@@ -16,7 +17,20 @@ public class PanelUno extends JPanel {
     private MenuDestino menuDestino;
     private MenuFecha menuFecha;
 
-    public PanelUno() {
+    private CrearRecorrido fruti_chillan = new CrearRecorrido(Localidades.FRUTILLAR, Localidades.CHILLAN, LocalDate.now());
+    private CrearRecorrido chillan_fruti = new CrearRecorrido(Localidades.CHILLAN, Localidades.FRUTILLAR, LocalDate.now());
+    private CrearRecorrido fruti_conce = new CrearRecorrido(Localidades.FRUTILLAR, Localidades.CONCEPCION, LocalDate.now());
+    private CrearRecorrido conce_fruti = new CrearRecorrido(Localidades.CONCEPCION, Localidades.FRUTILLAR, LocalDate.now());
+    private CrearRecorrido fruti_santi = new CrearRecorrido(Localidades.FRUTILLAR, Localidades.SANTIAGO, LocalDate.now());
+    private CrearRecorrido santi_fruti = new CrearRecorrido(Localidades.SANTIAGO, Localidades.FRUTILLAR, LocalDate.now());
+    private CrearRecorrido chillan_conce = new CrearRecorrido(Localidades.CHILLAN, Localidades.CONCEPCION, LocalDate.now());
+    private CrearRecorrido conce_chillan = new CrearRecorrido(Localidades.CONCEPCION, Localidades.CHILLAN, LocalDate.now());
+    private CrearRecorrido chillan_santi = new CrearRecorrido(Localidades.CHILLAN, Localidades.SANTIAGO, LocalDate.now());
+    private CrearRecorrido santi_chillan = new CrearRecorrido(Localidades.SANTIAGO, Localidades.CHILLAN, LocalDate.now());
+    private CrearRecorrido conce_santi = new CrearRecorrido(Localidades.CONCEPCION, Localidades.SANTIAGO, LocalDate.now());
+    private CrearRecorrido santi_conce = new CrearRecorrido(Localidades.SANTIAGO, Localidades.CONCEPCION, LocalDate.now());
+
+    public PanelUno() throws MismaLocalidadException, LocalidadNullException {
         setLayout(new FlowLayout());
 
         buscar = new JButton("Buscar");
@@ -33,23 +47,47 @@ public class PanelUno extends JPanel {
     }
     private void configureActionListeners() {
         buscar.addActionListener(e -> {
-            try {
-                recorrido = new CrearRecorrido(menuOrigen.getOrigen(), menuDestino.getDestino(), menuFecha.getFecha());
-                seleccionDeBus = new SeleccionDeBus(recorrido.getBuses());
-                add(buscar);
-                add(seleccionDeBus);
-                revalidate();
-                repaint();
-            } catch (MismaLocalidadException ex) {
-                JOptionPane.showMessageDialog(this, ex.getMessage());
-            } catch (LocalidadNullException ex) {
-                JOptionPane.showMessageDialog(this, ex.getMessage());
+            Localidades origen = menuOrigen.getOrigen();
+            Localidades destino = menuDestino.getDestino();
+            switch(origen){
+                case FRUTILLAR -> {
+                    switch(destino){
+                        case CHILLAN -> recorrido = fruti_chillan;
+                        case CONCEPCION -> recorrido = fruti_conce;
+                        case SANTIAGO -> recorrido = fruti_santi;
+                    }
+                }
+                case CHILLAN -> {
+                    switch(destino){
+                        case FRUTILLAR -> recorrido = chillan_fruti;
+                        case CONCEPCION -> recorrido = chillan_conce;
+                        case SANTIAGO -> recorrido = chillan_santi;
+                    }
+                }
+                case CONCEPCION -> {
+                    switch(destino){
+                        case FRUTILLAR -> recorrido = conce_fruti;
+                        case CHILLAN -> recorrido = conce_chillan;
+                        case SANTIAGO -> recorrido = conce_santi;
+                    }
+                }
+                case SANTIAGO -> {
+                    switch(destino){
+                        case FRUTILLAR -> recorrido = santi_fruti;
+                        case CHILLAN -> recorrido = santi_chillan;
+                        case CONCEPCION -> recorrido = santi_conce;
+                    }
+                }
             }
+            seleccionDeBus = new SeleccionDeBus(recorrido.getBuses());
+            add(buscar);
+            add(seleccionDeBus);
+            revalidate();
+            repaint();
         });
     }
 
-
-    public static void main(String[] args) {
+    public static void main(String[] args) throws MismaLocalidadException, LocalidadNullException {
         JFrame frame = new JFrame("Ventana");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(400, 200);

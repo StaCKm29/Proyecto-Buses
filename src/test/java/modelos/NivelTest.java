@@ -14,17 +14,12 @@ class NivelTest {
 
     @BeforeEach
     void setUp() {
-        nivel1 = new Nivel<Asiento>();
+        nivel1 = new Nivel<>();
         asiento1 = new SemiCama(1);
         asiento2 = new SemiCama(2);
         asiento3 = new SemiCama(3);
     }
 
-    @Test
-    void TestaddAsiento() {
-        nivel1.addAsiento(asiento1);
-        assertEquals(1, nivel1.asientosDisponibles());
-    }
 
     @Test
     void TestaddAsiento2() {

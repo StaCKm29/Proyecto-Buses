@@ -19,7 +19,7 @@ public class Cliente {
         this.numAsientos = numAsientos;
         for(int i = 0; i< numAsientos.size(); i++){
             int precioTotal = bus.getPrecioTotal(numAsientos.get(i));
-            Pasaje pasaje = bus.comprarPasaje(numAsientos.get(i), precioTotal);
+            Pasaje pasaje = bus.comprarPasaje(numAsientos.get(i), precioTotal, bus);
             pasaje.setDatos(nombre, apellido, rut);
             pasajes.add(pasaje);
             pasaje.generarPasajeTxt();
