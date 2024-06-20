@@ -13,15 +13,11 @@ public class AsientosEnUnPiso extends JPanel {
     private ArrayList<Asiento> asientos;
     private ArrayList<ImageAsiento>  asientosgraficos;
     private ArrayList<Integer> asientosSeleccionados = new ArrayList<>();
-    private static final int WIDTH = 20;
-    private static final int HEIGHT = 20;
-    private Image asientoDisponible;
-    private Image asientoOcupado;
 
     public AsientosEnUnPiso(ArrayList<Asiento> asientos) {
         this.asientos = asientos;
         //Creacion de arreglo gráfico
-        this.asientosgraficos = new ArrayList<ImageAsiento>();
+        this.asientosgraficos = new ArrayList<>();
         for(Asiento asiento: asientos){
             ImageAsiento asientoGrafico = new ImageAsiento(asiento , asientosSeleccionados);
             asientosgraficos.add(asientoGrafico);
