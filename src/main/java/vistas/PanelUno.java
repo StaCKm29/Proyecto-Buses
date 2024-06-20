@@ -15,7 +15,6 @@ public class PanelUno extends JPanel {
     private CrearRecorrido recorrido;
     private MenuOrigen menuOrigen;
     private MenuDestino menuDestino;
-    private MenuFecha menuFecha;
 
     private CrearRecorrido fruti_chillan = new CrearRecorrido(Localidades.FRUTILLAR, Localidades.CHILLAN, LocalDate.now());
     private CrearRecorrido chillan_fruti = new CrearRecorrido(Localidades.CHILLAN, Localidades.FRUTILLAR, LocalDate.now());
@@ -36,11 +35,9 @@ public class PanelUno extends JPanel {
         buscar = new JButton("Buscar");
         menuOrigen = new MenuOrigen();
         menuDestino = new MenuDestino();
-        menuFecha = new MenuFecha();
 
         add(menuOrigen);
         add(menuDestino);
-        add(menuFecha);
         add(buscar);
 
         configureActionListeners();

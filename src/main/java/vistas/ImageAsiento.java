@@ -17,6 +17,7 @@ public class ImageAsiento extends JPanel implements MouseListener {
     private Asiento asiento;
     private JLabel label;
     private boolean seleccionado;
+    private JWindow ventanita;
 
     public ImageAsiento(Asiento asiento, ArrayList<Integer> asientosSeleccionados) {
         int ancho = 20;
@@ -72,12 +73,21 @@ public class ImageAsiento extends JPanel implements MouseListener {
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        /*JOptionPane.showMessageDialog(null,"Asiento " + asiento.getNumero() + "\n"
-                + "Tipo de asiento: " + asiento.getTipo());*/
+        ventanita = new JWindow();
+        JLabel info = new JLabel("Asiento " + asiento.getNumero() + " - Tipo: " + asiento.getTipo());
+        ventanita.getContentPane().add(info);
+        ventanita.pack();
+        Point cursor = MouseInfo.getPointerInfo().getLocation();
+        ventanita.setLocation(cursor.x, cursor.y);
+        ventanita.setVisible(true);
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
+        if (ventanita != null) {
+            ventanita.dispose();
+            ventanita = null;
+        }
     }
 
     public static void main(String[] args) {

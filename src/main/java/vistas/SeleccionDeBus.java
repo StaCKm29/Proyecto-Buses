@@ -8,36 +8,43 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class SeleccionDeBus extends JPanel {
-    private JPanel panelActual;
+    private CardLayout cardLayout;
+    private JPanel cardPanel;
 
     public SeleccionDeBus(ArrayList<Bus> buses) {
-        setLayout(new FlowLayout());
+        cardLayout = new CardLayout();
+        cardPanel = new JPanel(cardLayout);
 
-        this.panelActual = new JPanel();
+        // Panel de Selección de Bus
+        JPanel panelSeleccionDeBus = new JPanel(new BorderLayout());
+
         JList<Bus> busesDisponibles = new JList<>(buses.toArray(new Bus[0]));
-
         JButton seleccionar = new JButton("Seleccionar");
+
+        panelSeleccionDeBus.add(new JScrollPane(busesDisponibles), BorderLayout.CENTER);
+        panelSeleccionDeBus.add(seleccionar, BorderLayout.SOUTH);
+
+        // Añadir panel de selección de bus al cardPanel
+        cardPanel.add(panelSeleccionDeBus, "SeleccionDeBus");
+
+        // Añadir ActionListener al botón de selección
         seleccionar.addActionListener(e -> {
             Bus bus = busesDisponibles.getSelectedValue();
-            JOptionPane.showMessageDialog(this, "Bus seleccionado: " + bus);
-            /*
-            // Crea un nuevo panel
-            SeleccionDeAsiento nuevaVentana = new SeleccionDeAsiento();
-
-            // Remueve el panel actual y agrega el nuevo
-            this.panelActual.removeAll();
-            this.panelActual.add(nuevaVentana);
-            this.panelActual.revalidate();
-            this.panelActual.repaint();*/
+            if (bus != null) {
+                SeleccionDeAsiento seleccionDeAsiento = new SeleccionDeAsiento(bus);
+                cardPanel.add(seleccionDeAsiento, "SeleccionDeAsiento");
+                cardLayout.show(cardPanel, "SeleccionDeAsiento");
+            } else {
+                JOptionPane.showMessageDialog(this, "Seleccione un bus primero", "Error", JOptionPane.ERROR_MESSAGE);
+            }
         });
 
-        //add(busesDisponibles);
-        add(panelActual);
-        add(new JScrollPane(busesDisponibles));
-        add(seleccionar);
+        // Añadir el cardPanel al SeleccionDeBus
+        setLayout(new BorderLayout());
+        add(cardPanel, BorderLayout.CENTER);
     }
 
-    public static void main(String args[]) throws MismaLocalidadException, LocalidadNullException {
+    public static void main(String[] args) throws MismaLocalidadException, LocalidadNullException {
         JFrame frame = new JFrame("Seleccion de Bus");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(400, 200);
