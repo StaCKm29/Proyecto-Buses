@@ -30,7 +30,7 @@ public class DosPisos extends Bus{
             primerPiso.addAsiento(asiento);
         }
 
-        for (int i = capacidadNivelUno - 1; i < capacidadNivelDos + (capacidadNivelUno-1) ; i++) {
+        for (int i = capacidadNivelUno ; i < capacidadNivelDos + (capacidadNivelUno) ; i++) {
             Asiento asiento = nivelDos.crearAsiento(i+1);
             segundoPiso.addAsiento(asiento);
         }

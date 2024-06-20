@@ -5,6 +5,7 @@ import modelos.Bus;
 import modelos.TipoAsiento;
 import modelos.UnPiso;
 
+import javax.lang.model.element.NestingKind;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
@@ -14,7 +15,7 @@ public class AsientosEnUnPiso extends JPanel {
     private ArrayList<ImageAsiento>  asientosgraficos;
     private ArrayList<Integer> asientosSeleccionados = new ArrayList<>();
 
-    public AsientosEnUnPiso(ArrayList<Asiento> asientos) {
+    public AsientosEnUnPiso(ArrayList<Asiento> asientos, String piso) {
         this.asientos = asientos;
         //Creacion de arreglo gráfico
         this.asientosgraficos = new ArrayList<>();
@@ -52,9 +53,13 @@ public class AsientosEnUnPiso extends JPanel {
         contenedor.add(columna3);
         JPanel panel = new JPanel();
         panel.setLayout(new BorderLayout());
-        panel.add(new JLabel("Piso 1"), BorderLayout.NORTH);
+        panel.add(new JLabel(piso), BorderLayout.NORTH);
         panel.add(contenedor, BorderLayout.CENTER);
         add(panel);
+    }
+
+    public ArrayList<Integer> getAsientosSeleccionados(){
+        return asientosSeleccionados;
     }
 
     @Override
@@ -74,7 +79,7 @@ public class AsientosEnUnPiso extends JPanel {
         asientos.get(0).Ocupar();
         asientos.get(26).Ocupar();
 
-        AsientosEnUnPiso asientosEnUnPiso = new AsientosEnUnPiso(asientos);
+        AsientosEnUnPiso asientosEnUnPiso = new AsientosEnUnPiso(asientos, "Piso 1");
         frame.add(asientosEnUnPiso);
 
         frame.setVisible(true);
