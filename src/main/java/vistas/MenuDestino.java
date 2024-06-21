@@ -15,7 +15,7 @@ public class MenuDestino extends JPanel implements ItemListener {
         JLabel nombre = new JLabel("Destino: ");
         add(nombre);
         destino = new Choice();
-
+        destino.add("Seleccione una localidad");
         destino.add("Frutillar");
         destino.add("Concepción");
         destino.add("Chillán");

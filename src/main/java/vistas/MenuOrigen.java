@@ -15,7 +15,7 @@ public class MenuOrigen extends JPanel implements ItemListener {
         JLabel nombre = new JLabel("Origen: ");
         add(nombre);
         origen = new Choice();
-
+        origen.add("Seleccione una localidad");
         origen.add("Frutillar");
         origen.add("Concepción");
         origen.add("Chillán");
