@@ -39,6 +39,10 @@ public class SeleccionDeAsiento extends JPanel {
 
     }
 
+    public JButton getBotonCompra(){
+        return botonCompra;
+    }
+
     private void comprarPasajes(){
         if(bus.getClass() == UnPiso.class){
             asientosSeleccionados.addAll(pisoUno.getAsientosSeleccionados());

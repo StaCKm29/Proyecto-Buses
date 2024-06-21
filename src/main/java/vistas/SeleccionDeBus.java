@@ -10,6 +10,7 @@ import java.util.ArrayList;
 public class SeleccionDeBus extends JPanel {
     private CardLayout cardLayout;
     private JPanel cardPanel;
+    private JList<Bus> busesDisponibles;
 
     public SeleccionDeBus(ArrayList<Bus> buses) {
         cardLayout = new CardLayout();
@@ -18,7 +19,7 @@ public class SeleccionDeBus extends JPanel {
         // Panel de Selección de Bus
         JPanel panelSeleccionDeBus = new JPanel(new BorderLayout());
 
-        JList<Bus> busesDisponibles = new JList<>(buses.toArray(new Bus[0]));
+        busesDisponibles = new JList<>(buses.toArray(new Bus[0]));
         JButton seleccionar = new JButton("Seleccionar");
 
         panelSeleccionDeBus.add(new JScrollPane(busesDisponibles), BorderLayout.CENTER);
@@ -42,6 +43,10 @@ public class SeleccionDeBus extends JPanel {
         // Añadir el cardPanel al SeleccionDeBus
         setLayout(new BorderLayout());
         add(cardPanel, BorderLayout.CENTER);
+    }
+
+    public Bus getBusSeleccionado() {
+        return busesDisponibles.getSelectedValue();
     }
 
     public static void main(String[] args) throws MismaLocalidadException, LocalidadNullException {
