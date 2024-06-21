@@ -1,9 +1,6 @@
 package vistas;
 
-import modelos.CrearRecorrido;
-import modelos.LocalidadNullException;
-import modelos.Localidades;
-import modelos.MismaLocalidadException;
+import modelos.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,40 +13,21 @@ public class PanelUno extends JPanel {
     private MenuOrigen menuOrigen;
     private MenuDestino menuDestino;
 
-    private CrearRecorrido fruti_chillan;
-    private CrearRecorrido chillan_fruti;
-    private CrearRecorrido fruti_conce;
-    private CrearRecorrido conce_fruti;
-    private CrearRecorrido fruti_santi;
-    private CrearRecorrido santi_fruti;
-    private CrearRecorrido chillan_conce;
-    private CrearRecorrido conce_chillan;
-    private CrearRecorrido chillan_santi;
-    private CrearRecorrido santi_chillan;
-    private CrearRecorrido conce_santi;
-    private CrearRecorrido santi_conce;
+    private CrearRecorrido fruti_chillan = new CrearRecorrido(Localidades.FRUTILLAR, Localidades.CHILLAN, LocalDate.now());
+    private CrearRecorrido chillan_fruti = new CrearRecorrido(Localidades.CHILLAN, Localidades.FRUTILLAR, LocalDate.now());
+    private CrearRecorrido fruti_conce = new CrearRecorrido(Localidades.FRUTILLAR, Localidades.CONCEPCION, LocalDate.now());
+    private CrearRecorrido conce_fruti = new CrearRecorrido(Localidades.CONCEPCION, Localidades.FRUTILLAR, LocalDate.now());
+    private CrearRecorrido fruti_santi = new CrearRecorrido(Localidades.FRUTILLAR, Localidades.SANTIAGO, LocalDate.now());
+    private CrearRecorrido santi_fruti = new CrearRecorrido(Localidades.SANTIAGO, Localidades.FRUTILLAR, LocalDate.now());
+    private CrearRecorrido chillan_conce = new CrearRecorrido(Localidades.CHILLAN, Localidades.CONCEPCION, LocalDate.now());
+    private CrearRecorrido conce_chillan = new CrearRecorrido(Localidades.CONCEPCION, Localidades.CHILLAN, LocalDate.now());
+    private CrearRecorrido chillan_santi = new CrearRecorrido(Localidades.CHILLAN, Localidades.SANTIAGO, LocalDate.now());
+    private CrearRecorrido santi_chillan = new CrearRecorrido(Localidades.SANTIAGO, Localidades.CHILLAN, LocalDate.now());
+    private CrearRecorrido conce_santi = new CrearRecorrido(Localidades.CONCEPCION, Localidades.SANTIAGO, LocalDate.now());
+    private CrearRecorrido santi_conce = new CrearRecorrido(Localidades.SANTIAGO, Localidades.CONCEPCION, LocalDate.now());
 
-    public PanelUno() {
+    public PanelUno() throws MismaLocalidadException, LocalidadNullException {
         setLayout(new FlowLayout());
-
-        try {
-            fruti_chillan = new CrearRecorrido(Localidades.FRUTILLAR, Localidades.CHILLAN, LocalDate.now());
-            chillan_fruti = new CrearRecorrido(Localidades.CHILLAN, Localidades.FRUTILLAR, LocalDate.now());
-            fruti_conce = new CrearRecorrido(Localidades.FRUTILLAR, Localidades.CONCEPCION, LocalDate.now());
-            conce_fruti = new CrearRecorrido(Localidades.CONCEPCION, Localidades.FRUTILLAR, LocalDate.now());
-            fruti_santi = new CrearRecorrido(Localidades.FRUTILLAR, Localidades.SANTIAGO, LocalDate.now());
-            santi_fruti = new CrearRecorrido(Localidades.SANTIAGO, Localidades.FRUTILLAR, LocalDate.now());
-            chillan_conce = new CrearRecorrido(Localidades.CHILLAN, Localidades.CONCEPCION, LocalDate.now());
-            conce_chillan = new CrearRecorrido(Localidades.CONCEPCION, Localidades.CHILLAN, LocalDate.now());
-            chillan_santi = new CrearRecorrido(Localidades.CHILLAN, Localidades.SANTIAGO, LocalDate.now());
-            santi_chillan = new CrearRecorrido(Localidades.SANTIAGO, Localidades.CHILLAN, LocalDate.now());
-            conce_santi = new CrearRecorrido(Localidades.CONCEPCION, Localidades.SANTIAGO, LocalDate.now());
-            santi_conce = new CrearRecorrido(Localidades.SANTIAGO, Localidades.CONCEPCION, LocalDate.now());
-        } catch (MismaLocalidadException e){
-            JOptionPane.showMessageDialog(this, e.getMessage());
-        } catch (LocalidadNullException e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());
-        }
 
         buscar = new JButton("Buscar");
         menuOrigen = new MenuOrigen();
@@ -101,6 +79,14 @@ public class PanelUno extends JPanel {
             revalidate();
             repaint();
         });
+    }
+
+    public Bus getBusSeleccionado() {
+        if (seleccionDeBus != null) {
+            return seleccionDeBus.getBusSeleccionado();
+        } else {
+            return null;
+        }
     }
 
     public static void main(String[] args) {
