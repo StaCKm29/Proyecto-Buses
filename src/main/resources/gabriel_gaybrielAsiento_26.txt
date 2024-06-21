@@ -1,0 +1,10 @@
+Origen: Concepción
+Destino: Santiago
+Nombre: gabriel_gaybriel
+Rut: xdd
+Asiento: 26
+Precio: 22000
+Hora de salida: 02:26
+Fecha de salida: 2024-06-21
+Recuerde llegar al terminal con 15 minutos de anticipación
+Gracias por preferirnos

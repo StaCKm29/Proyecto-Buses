@@ -58,6 +58,12 @@ public class AsientosEnUnPiso extends JPanel {
         add(panel);
     }
 
+    public void actualizarAsientos(){
+        for(int i = 0 ; i<asientosgraficos.size(); i++){
+            asientosgraficos.get(i).updateIcon();
+        }
+    }
+
     public ArrayList<Integer> getAsientosSeleccionados(){
         return asientosSeleccionados;
     }

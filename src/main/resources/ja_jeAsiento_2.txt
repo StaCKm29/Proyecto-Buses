@@ -1,0 +1,10 @@
+Origen: Concepción
+Destino: Chillán
+Nombre: ja_je
+Rut: ji
+Asiento: 2
+Precio: 14000
+Hora de salida: 12:18
+Fecha de salida: 2024-06-21
+Recuerde llegar al terminal con 15 minutos de anticipación
+Gracias por preferirnos

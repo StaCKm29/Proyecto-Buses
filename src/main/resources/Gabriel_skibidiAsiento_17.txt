@@ -1,0 +1,10 @@
+Origen: Concepción
+Destino: Santiago
+Nombre: Gabriel_skibidi
+Rut: toilet
+Asiento: 17
+Precio: 22000
+Hora de salida: 01:32
+Fecha de salida: 2024-06-21
+Recuerde llegar al terminal con 15 minutos de anticipación
+Gracias por preferirnos

@@ -1,0 +1,10 @@
+Origen: Concepción
+Destino: Santiago
+Nombre: hola_hi
+Rut: hi
+Asiento: 11
+Precio: 16000
+Hora de salida: 17:39
+Fecha de salida: 2024-06-22
+Recuerde llegar al terminal con 15 minutos de anticipación
+Gracias por preferirnos

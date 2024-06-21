@@ -20,16 +20,16 @@ public class SeleccionDeBus extends JPanel {
         JPanel panelSeleccionDeBus = new JPanel(new BorderLayout());
 
         busesDisponibles = new JList<>(buses.toArray(new Bus[0]));
-        JButton seleccionar = new JButton("Seleccionar");
+       // JButton seleccionar = new JButton("Seleccionar");
 
         panelSeleccionDeBus.add(new JScrollPane(busesDisponibles), BorderLayout.CENTER);
-        panelSeleccionDeBus.add(seleccionar, BorderLayout.SOUTH);
+        //panelSeleccionDeBus.add(seleccionar, BorderLayout.SOUTH);
 
         // Añadir panel de selección de bus al cardPanel
         cardPanel.add(panelSeleccionDeBus, "SeleccionDeBus");
 
         // Añadir ActionListener al botón de selección
-        seleccionar.addActionListener(e -> {
+/*        seleccionar.addActionListener(e -> {
             Bus bus = busesDisponibles.getSelectedValue();
             if (bus != null) {
                 SeleccionDeAsiento seleccionDeAsiento = new SeleccionDeAsiento(bus);
@@ -38,7 +38,7 @@ public class SeleccionDeBus extends JPanel {
             } else {
                 JOptionPane.showMessageDialog(this, "Seleccione un bus primero", "Error", JOptionPane.ERROR_MESSAGE);
             }
-        });
+        });*/
 
         // Añadir el cardPanel al SeleccionDeBus
         setLayout(new BorderLayout());

@@ -1,0 +1,10 @@
+Origen: Frutillar
+Destino: Chillán
+Nombre: ye_yo
+Rut: yi
+Asiento: 26
+Precio: 14000
+Hora de salida: 02:24
+Fecha de salida: 2024-06-21
+Recuerde llegar al terminal con 15 minutos de anticipación
+Gracias por preferirnos
