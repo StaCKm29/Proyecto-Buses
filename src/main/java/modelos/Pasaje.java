@@ -50,34 +50,8 @@ public class Pasaje {
     public Asiento getAsiento(){
         return asiento;
     }
-    /**
-     * Método que retorna el nombre del pasajero.
-     * @return Nombre.
-     */
-    public String getNombre(){
-        return nombre;
-    }
-    /**
-     * Método que retorna el apellido del pasajero.
-     * @return Apellido.
-     */
-    public String getApellido(){
-        return apellido;
-    }
-    /**
-     * Método que retorna el rut del pasajero.
-     * @return rut.
-     */
-    public String getRut(){
-        return rut;
-    }
-    /**
-     * Método que retorna precio del pasaje.
-     * @return Origen.
-     */
-    public int getPrecioTotal(){
-        return precioTotal;
-    }
+
+
     /**
      * Método crea un archivo txt con los datos del pasaje.
      */

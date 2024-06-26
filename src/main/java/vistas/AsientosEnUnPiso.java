@@ -9,12 +9,19 @@ import javax.lang.model.element.NestingKind;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
-
+/**
+ * Clase AsientosEnUnPiso que se utilizará para mostrar los asientos de un piso de un bus
+ */
 public class AsientosEnUnPiso extends JPanel {
     private ArrayList<Asiento> asientos;
     private ArrayList<ImageAsiento>  asientosgraficos;
     private ArrayList<Integer> asientosSeleccionados = new ArrayList<>();
 
+    /**
+     * Constructor de la clase AsientosEnUnPiso
+     * @param asientos ArrayList de asientos
+     * @param piso String con el numero de piso del bus
+     */
     public AsientosEnUnPiso(ArrayList<Asiento> asientos, String piso, Color color) {
         this.asientos = asientos;
         //Creacion de arreglo gráfico
@@ -58,13 +65,18 @@ public class AsientosEnUnPiso extends JPanel {
         panel.add(contenedor, BorderLayout.CENTER);
         add(panel);
     }
-
+    /**
+     * Método que actualiza los iconos de los asientos
+     */
     public void actualizarAsientos(){
         for(int i = 0 ; i<asientosgraficos.size(); i++){
             asientosgraficos.get(i).updateIcon();
         }
     }
-
+    /**
+     * Método que retorna los asientos seleccionados
+     * @return ArrayList de enteros con los asientos seleccionados
+     */
     public ArrayList<Integer> getAsientosSeleccionados(){
         return asientosSeleccionados;
     }
@@ -72,24 +84,6 @@ public class AsientosEnUnPiso extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-    }
-
-
-
-    public static void main(String[] args) {
-        JFrame frame = new JFrame("Asientos en un piso");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(400, 200);
-
-        Bus bus = new UnPiso(4000, TipoAsiento.SEMICAMA);
-        ArrayList<Asiento> asientos = bus.getAsientos(1);
-        asientos.get(0).Ocupar();
-        asientos.get(26).Ocupar();
-
-        AsientosEnUnPiso asientosEnUnPiso = new AsientosEnUnPiso(asientos, "Piso 1", Color.cyan);
-        frame.add(asientosEnUnPiso);
-
-        frame.setVisible(true);
     }
 
 }

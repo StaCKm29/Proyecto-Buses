@@ -6,7 +6,9 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
-
+/**
+ * Clase que representa un recorrido y buses que recorren dicho recorrido.
+ */
 public class CrearRecorrido {
     private ArrayList<Bus> buses = new ArrayList<>();
     private BusFactory busFactory1 = new UnPisoFactory();

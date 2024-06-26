@@ -5,7 +5,9 @@ import modelos.*;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
-
+/**
+ * Clase SeleccionDeAsiento que se utilizará para seleccionar los asientos de un bus
+ */
 public class SeleccionDeAsiento extends JPanel {
     private ArrayList<Asiento> asientosDelBus;
     private ArrayList<Integer> asientosSeleccionados = new ArrayList<>();
@@ -16,7 +18,11 @@ public class SeleccionDeAsiento extends JPanel {
     private Cliente cliente;
     private Bus bus;
     private CambioPanelListener listener;
-
+    /**
+     * Constructor de la clase SeleccionDeAsiento
+     * @param bus Bus a seleccionar asientos
+     * @param listener Listener que se encargará de cambiar de panel
+     */
     public SeleccionDeAsiento(Bus bus, CambioPanelListener listener) {
         this.listener = listener;
         this.bus = bus;
@@ -76,6 +82,9 @@ public class SeleccionDeAsiento extends JPanel {
         }
     }
 
+    /**
+     * Método que se encarga de comprar los pasajes
+     */
 
     private void comprarPasajes() throws AsientoNoSeleccionadoException, DatosVaciosException {
         if (bus.getClass() == UnPiso.class) {
@@ -99,3 +108,23 @@ public class SeleccionDeAsiento extends JPanel {
     }
 
 }
+
+   /* public static void main(String[] args) {
+        JFrame frame = new JFrame("Seleccion de Asiento");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(400, 200);
+        //Bus bus = new UnPiso(2000, TipoAsiento.SEMICAMA);
+        Bus bus= new DosPisos(2000, TipoAsiento.SEMICAMA, TipoAsiento.SEMICAMA);
+        LocalTime hora = LocalTime.of(10, 0);
+        LocalDate fecha = LocalDate.of(2024, 12, 12);
+        bus.setHoraSalida(hora);
+        bus.setOrigen(Localidades.SANTIAGO.toString());
+        bus.setDestino(Localidades.CONCEPCION.toString());
+        bus.setFechaSalida(fecha);
+        SeleccionDeAsiento seleccionDeAsiento = new SeleccionDeAsiento(bus);
+
+        frame.add(seleccionDeAsiento);
+
+        frame.setVisible(true);
+    }*/
+

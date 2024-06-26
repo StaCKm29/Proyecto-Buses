@@ -9,10 +9,6 @@ public enum TipoAsiento {
             return new Comun(numAsiento);
         }
 
-        /*@Override
-        public Asiento getAsiento(int numAsiento){
-            return new Comun(numAsiento);
-        }*/
     },
     SEMICAMA(6000){
         @Override
@@ -20,10 +16,6 @@ public enum TipoAsiento {
             return new SemiCama(numAsiento);
         }
 
-        /*@Override
-        public Asiento getAsiento(int numAsiento){
-            return new SemiCama(numAsiento);
-        }*/
     },
     SALONCAMA(12000){
         @Override
@@ -31,10 +23,6 @@ public enum TipoAsiento {
             return new SalonCama(numAsiento);
         }
 
-        /*@Override
-        public Asiento getAsiento(int numAsiento){
-            return new SalonCama(numAsiento);
-        }*/
     };
     private final int precio;
     /**

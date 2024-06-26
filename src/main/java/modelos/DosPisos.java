@@ -57,6 +57,9 @@ public class DosPisos extends Bus{
     }
     /**
      * Método que retorna un pasaje comprado con datos del bus.
+     * @param numero Número del asiento.
+     * @param precioTotal Precio total del pasaje.
+     * @param bus Bus en el que se compra el pasaje.
      * @return Nuevo pasaje.
      */
     @Override
@@ -68,7 +71,11 @@ public class DosPisos extends Bus{
             return new Pasaje(segundoPiso.adquirirAsiento(numero - capacidadNivelUno), precioTotal, bus);
         }
     }
-
+    /**
+     * Método que retorna los asientos de un nivel.
+     * @param numeroNivel Número del nivel.
+     * @return Asientos del nivel.
+     */
     @Override
     public ArrayList<Asiento> getAsientos(int numeroNivel){
         if(numeroNivel == 1)
@@ -76,7 +83,10 @@ public class DosPisos extends Bus{
         else
             return segundoPiso.getArrayAsientos();
     }
-
+    /**
+     * Método que retorna el tipo de asiento de un asiento.
+     * @return Strin con los datos del bus
+     */
     @Override
     public String toString() {
         int precioTotal;

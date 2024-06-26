@@ -8,10 +8,16 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 
+/**
+ * Clase Ventana que se utilizará para mostrar la interfaz gráfica
+ */
 public class Ventana extends JFrame {
     private PanelPrincipal panelPrincipal;
-
-
+    /**
+     * Constructor de la clase Ventana
+     * @throws MismaLocalidadException
+     * @throws LocalidadNullException
+     */
     public Ventana() throws MismaLocalidadException, LocalidadNullException, MismasLocalidadesException {
         setLayout(new BorderLayout());
         panelPrincipal = new PanelPrincipal();
