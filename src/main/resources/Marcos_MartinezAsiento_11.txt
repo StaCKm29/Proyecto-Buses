@@ -1,0 +1,10 @@
+Origen: Concepción
+Destino: Chillán
+Nombre: Marcos_Martinez
+Rut: 213518704
+Asiento: 11
+Precio: 14000
+Hora de salida: 21:25
+Fecha de salida: 2024-06-26
+Recuerde llegar al terminal con 15 minutos de anticipación
+Gracias por preferirnos

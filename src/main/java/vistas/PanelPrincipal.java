@@ -12,7 +12,7 @@ public class PanelPrincipal extends JPanel implements CambioPanelListener {
     private PanelUno panelUno;
     private SeleccionDeAsiento seleccionDeAsiento;
 
-    public PanelPrincipal() throws MismaLocalidadException, LocalidadNullException {
+    public PanelPrincipal() throws MismaLocalidadException, LocalidadNullException, MismasLocalidadesException {
         setLayout(new BorderLayout());
         panelUno = new PanelUno(this);
 
@@ -23,7 +23,6 @@ public class PanelPrincipal extends JPanel implements CambioPanelListener {
         //1) buscar viajes(buses) dependiendo del origen y destino.
         //2) seleccionar asientos del bus seleccionado y a la vez comprar los pasajes.
         cardPanel.add(panelUno, "Buscador");
-
         add(cardPanel, BorderLayout.CENTER);
 
         //El primero en mostrarse al correr el programa
@@ -42,7 +41,7 @@ public class PanelPrincipal extends JPanel implements CambioPanelListener {
                 frame.getContentPane().add(panelPrincipal);
 
                 frame.setVisible(true);
-            } catch (MismaLocalidadException | LocalidadNullException e) {
+            } catch (MismaLocalidadException | LocalidadNullException | MismasLocalidadesException e) {
                 e.printStackTrace();
                 JOptionPane.showMessageDialog(null, "Error al iniciar la aplicación: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             }
@@ -60,4 +59,5 @@ public class PanelPrincipal extends JPanel implements CambioPanelListener {
     public void volverABuscador() {
         cardLayout.show(cardPanel, "Buscador");
     }
+
 }

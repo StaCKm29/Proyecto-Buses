@@ -13,9 +13,6 @@ public class DatosPersonales extends JPanel {
     private JTextField nombreTexto;
     private JTextField apellidoTexto;
     private JTextField rutTexto;
-    private String nombre;
-    private String apellido;
-    private String rut;
 
     public DatosPersonales(){
         JLabel nombre = new JLabel("Nombre:");
@@ -36,16 +33,28 @@ public class DatosPersonales extends JPanel {
         add(contenedor);
     }
 
-    public String getNombre(){
-        return nombreTexto.getText();
+    public String getNombre() throws DatosVaciosException{
+        String nombre = nombreTexto.getText();
+        if (nombre == null || nombre.trim().isEmpty()){
+            throw new DatosVaciosException("Su nombre no puede estar vacío");
+        }
+        return nombre;
     }
 
-    public String getApellido(){
-        return apellidoTexto.getText();
+    public String getApellido() throws DatosVaciosException{
+        String apellido = apellidoTexto.getText();
+        if (apellido == null || apellido.trim().isEmpty()){
+            throw new DatosVaciosException("Su apellido no puede estar vacío");
+        }
+        return apellido;
     }
 
-    public String getRut(){
-        return rutTexto.getText();
+    public String getRut() throws DatosVaciosException{
+        String rut = rutTexto.getText();
+        if (rut == null || rut.trim().isEmpty()){
+            throw new DatosVaciosException("Su rut no puede estar vacío");
+        }
+        return rut;
     }
 
 

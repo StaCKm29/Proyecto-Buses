@@ -47,7 +47,10 @@ public class MenuDestino extends JPanel implements ItemListener {
         }
     }
 
-    public Localidades getDestino() {
+    public Localidades getDestino() throws LocalidadesNullException {
+        if(localidad == null) {
+            throw new LocalidadesNullException("No se ha seleccionado una localidad de destino");
+        }
         return localidad;
     }
 }

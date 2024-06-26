@@ -12,6 +12,8 @@ public class Main {
                 new Ventana();
             } catch (MismaLocalidadException | LocalidadNullException e) {
                 e.printStackTrace();
+            } catch (MismasLocalidadesException e) {
+                throw new RuntimeException(e);
             }
         });
     }

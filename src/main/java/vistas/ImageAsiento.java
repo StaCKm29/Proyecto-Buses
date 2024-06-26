@@ -20,8 +20,8 @@ public class ImageAsiento extends JPanel implements MouseListener {
     private JWindow ventanita;
 
     public ImageAsiento(Asiento asiento, ArrayList<Integer> asientosSeleccionados) {
-        int ancho = 20;
-        int alto = 20;
+        int ancho = 30;
+        int alto = 30;
 
         this.asiento = asiento;
         this.seleccionado = false; // Inicialmente no seleccionado

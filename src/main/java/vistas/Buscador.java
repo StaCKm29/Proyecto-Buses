@@ -24,10 +24,10 @@ public class Buscador extends JPanel {
     public ArrayList<Bus> getBuses() {
         return recorrido.getBuses();
     }
-    public Localidades getOrigen() {
+    public Localidades getOrigen() throws LocalidadesNullException {
         return origen.getOrigen();
     }
-    public Localidades getDestino() {
+    public Localidades getDestino() throws LocalidadesNullException {
         return destino.getDestino();
     }
 

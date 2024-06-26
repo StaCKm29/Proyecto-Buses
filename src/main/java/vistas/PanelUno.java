@@ -2,8 +2,10 @@ package vistas;
 
 import modelos.*;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 import java.time.LocalDate;
 
 public class PanelUno extends JPanel {
@@ -15,6 +17,7 @@ public class PanelUno extends JPanel {
     private MenuDestino menuDestino;
     private Bus busSeleccionado;
     private CambioPanelListener listener;
+    private Image imagenFondo;
 
     private CrearRecorrido fruti_chillan = new CrearRecorrido(Localidades.FRUTILLAR, Localidades.CHILLAN, LocalDate.now());
     private CrearRecorrido chillan_fruti = new CrearRecorrido(Localidades.CHILLAN, Localidades.FRUTILLAR, LocalDate.now());
@@ -29,7 +32,7 @@ public class PanelUno extends JPanel {
     private CrearRecorrido conce_santi = new CrearRecorrido(Localidades.CONCEPCION, Localidades.SANTIAGO, LocalDate.now());
     private CrearRecorrido santi_conce = new CrearRecorrido(Localidades.SANTIAGO, Localidades.CONCEPCION, LocalDate.now());
 
-    public PanelUno(CambioPanelListener listener) throws MismaLocalidadException, LocalidadNullException {
+    public PanelUno(CambioPanelListener listener) throws MismaLocalidadException, LocalidadNullException, MismasLocalidadesException {
         this.listener = listener;
         setLayout(new FlowLayout());
 
@@ -43,14 +46,32 @@ public class PanelUno extends JPanel {
         add(menuDestino);
         add(buscar);
         add(seleccionar);
+        try {
+            imagenFondo = ImageIO.read(getClass().getResource("/imagenFondo.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         configActionListener();
     }
 
     private void configActionListener() {
         buscar.addActionListener(e -> {
-            Localidades origen = menuOrigen.getOrigen();
-            Localidades destino = menuDestino.getDestino();
+            Localidades origen = null;
+            Localidades destino = null;
+
+            try {
+                origen = menuOrigen.getOrigen();
+                destino = menuDestino.getDestino();
+                if (origen == destino){
+                    throw new MismasLocalidadesException("El origen y el destino no pueden ser la misma localidad");
+                }
+            } catch (LocalidadesNullException ex) {
+                JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            } catch (MismasLocalidadesException ex) {
+                JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            }
+
             switch (origen) {
                 case FRUTILLAR -> {
                     switch (destino) {
@@ -81,9 +102,11 @@ public class PanelUno extends JPanel {
                     }
                 }
             }
+
             if(seleccionDeBus!=null){
                 remove(seleccionDeBus);
             }
+
             seleccionDeBus = new SeleccionDeBus(recorrido.getBuses());
             add(seleccionDeBus);
             revalidate();
@@ -91,7 +114,11 @@ public class PanelUno extends JPanel {
         });
 
         seleccionar.addActionListener(e -> {
-            busSeleccionado = seleccionDeBus.getBusSeleccionado();
+            try {
+                busSeleccionado = seleccionDeBus.getBusSeleccionado();
+            } catch (BusSeleccionadoNull ex) {
+                JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            }
         });
     }
 
@@ -99,21 +126,9 @@ public class PanelUno extends JPanel {
         return busSeleccionado;
     }
 
-    /*public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            JFrame frame = new JFrame("Ventana");
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setSize(400, 200);
-
-            try {
-                PanelUno panelUno = new PanelUno();
-                frame.add(panelUno);
-            } catch (Exception e) {
-                e.printStackTrace();
-                JOptionPane.showMessageDialog(null, "Error al inicializar el panel: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-            }
-
-            frame.setVisible(true);
-        });
-    }*/
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        g.drawImage(imagenFondo, 0, 0, getWidth(), getHeight(), this);
+    }
 }

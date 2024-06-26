@@ -28,24 +28,16 @@ public class SeleccionDeBus extends JPanel {
         // Añadir panel de selección de bus al cardPanel
         cardPanel.add(panelSeleccionDeBus, "SeleccionDeBus");
 
-        // Añadir ActionListener al botón de selección
-/*        seleccionar.addActionListener(e -> {
-            Bus bus = busesDisponibles.getSelectedValue();
-            if (bus != null) {
-                SeleccionDeAsiento seleccionDeAsiento = new SeleccionDeAsiento(bus);
-                cardPanel.add(seleccionDeAsiento, "SeleccionDeAsiento");
-                cardLayout.show(cardPanel, "SeleccionDeAsiento");
-            } else {
-                JOptionPane.showMessageDialog(this, "Seleccione un bus primero", "Error", JOptionPane.ERROR_MESSAGE);
-            }
-        });*/
 
         // Añadir el cardPanel al SeleccionDeBus
         setLayout(new BorderLayout());
         add(cardPanel, BorderLayout.CENTER);
     }
 
-    public Bus getBusSeleccionado() {
+    public Bus getBusSeleccionado() throws BusSeleccionadoNull{
+        if (busesDisponibles.getSelectedValue() == null) {
+            throw new BusSeleccionadoNull("No se ha seleccionado un bus.");
+        }
         return busesDisponibles.getSelectedValue();
     }
 

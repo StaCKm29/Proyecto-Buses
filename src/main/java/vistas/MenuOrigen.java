@@ -1,5 +1,6 @@
 package vistas;
 
+import modelos.LocalidadNullException;
 import modelos.Localidades;
 
 import javax.swing.*;
@@ -46,7 +47,10 @@ public class MenuOrigen extends JPanel implements ItemListener {
             }
         }
     }
-    public Localidades getOrigen() {
+    public Localidades getOrigen() throws LocalidadesNullException {
+        if(localidad == null) {
+            throw new LocalidadesNullException("No se ha seleccionado una localidad de origen");
+        }
         return localidad;
     }
 }
