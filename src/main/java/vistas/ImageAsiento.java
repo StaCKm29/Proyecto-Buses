@@ -8,7 +8,9 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
-
+/**
+ * Clase ImageAsiento que se utilizará para mostrar un asiento gráficamente
+ */
 public class ImageAsiento extends JPanel implements MouseListener {
     private ArrayList<Integer> asientosSeleccionados;
     private ImageIcon iconDisponible;
@@ -18,7 +20,11 @@ public class ImageAsiento extends JPanel implements MouseListener {
     private JLabel label;
     private boolean seleccionado;
     private JWindow ventanita;
-
+    /**
+     * Constructor de la clase ImageAsiento
+     * @param asiento Asiento a mostrar
+     * @param asientosSeleccionados ArrayList con los asientos seleccionados
+     */
     public ImageAsiento(Asiento asiento, ArrayList<Integer> asientosSeleccionados) {
         int ancho = 20;
         int alto = 20;
@@ -39,7 +45,9 @@ public class ImageAsiento extends JPanel implements MouseListener {
         add(label);
         addMouseListener(this);
     }
-
+    /**
+     * Método que actualiza el icono del asiento
+     */
     public void updateIcon() {
         if (asiento.getEstado()) {
             label.setIcon(iconOcupado);
@@ -49,7 +57,10 @@ public class ImageAsiento extends JPanel implements MouseListener {
             label.setIcon(iconDisponible);
         }
     }
-
+    /**
+     * Método que modifica el ArrayList de los asientos seleccionados si es que el asiento es seleccionado
+     * o deseleccionado
+     */
     @Override
     public void mouseClicked(MouseEvent e) {
         if (!asiento.getEstado()) {
@@ -70,7 +81,9 @@ public class ImageAsiento extends JPanel implements MouseListener {
     @Override
     public void mouseReleased(MouseEvent e) {
     }
-
+    /**
+     * Método que muestra información del asiento al pasar el mouse por encima
+     */
     @Override
     public void mouseEntered(MouseEvent e) {
         ventanita = new JWindow();
@@ -81,24 +94,14 @@ public class ImageAsiento extends JPanel implements MouseListener {
         ventanita.setLocation(cursor.x, cursor.y);
         ventanita.setVisible(true);
     }
-
+    /**
+     * Método que cierra la ventana de información al salir del asiento
+     */
     @Override
     public void mouseExited(MouseEvent e) {
         if (ventanita != null) {
             ventanita.dispose();
             ventanita = null;
         }
-    }
-
-    public static void main(String[] args) {
-        JFrame frame = new JFrame("Asiento");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(400, 200);
-        Asiento semicama = TipoAsiento.SEMICAMA.crearAsiento(1);
-
-        ImageAsiento imageAsiento = new ImageAsiento(semicama, new ArrayList<>());
-        frame.add(imageAsiento);
-
-        frame.setVisible(true);
     }
 }

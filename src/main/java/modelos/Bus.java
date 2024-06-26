@@ -99,12 +99,19 @@ public abstract class Bus {
     public LocalDate getFechaSalida(){
         return fechaSalida;
     }
-
+    /**
+     * Método que retorna la hora y fecha de salida del bus.
+     * @return Hora y fecha de salida.
+     */
     @Override
     public String toString(){
         return ", Hora de Salida=" + horaSalida +
                 ", Fecha de Salida=" + fechaSalida;
     }
-
+    /**
+     * Método que retorna los asientos de un piso del bus.
+     * @param numeroNivel Número de piso.
+     * @return Asientos de un piso.
+     */
     public abstract ArrayList<Asiento> getAsientos(int numeroNivel);
 }

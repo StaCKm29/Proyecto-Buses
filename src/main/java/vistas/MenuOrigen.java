@@ -6,11 +6,15 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-
+/**
+ * Clase MenuOrigen que se utilizará para seleccionar el origen de un recorrido
+ */
 public class MenuOrigen extends JPanel implements ItemListener {
     private Choice origen;
     private Localidades localidad;
-
+    /**
+     * Constructor de la clase MenuOrigen
+     */
     public MenuOrigen() {
         JLabel nombre = new JLabel("Origen: ");
         add(nombre);
@@ -26,6 +30,10 @@ public class MenuOrigen extends JPanel implements ItemListener {
         add(origen);
     }
 
+    /**
+     * Metodo que mantiene actualizada la localidad de origen
+     * @param e Evento que se activa al seleccionar un choice
+     */
     @Override
     public void itemStateChanged(ItemEvent e) {
         if(e.getSource() == origen) {
@@ -46,6 +54,10 @@ public class MenuOrigen extends JPanel implements ItemListener {
             }
         }
     }
+    /**
+     * Método que retorna la localidad seleccionada
+     * @return Localidad seleccionada
+     */
     public Localidades getOrigen() {
         return localidad;
     }

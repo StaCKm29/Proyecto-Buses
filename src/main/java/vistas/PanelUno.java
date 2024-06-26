@@ -5,7 +5,9 @@ import modelos.*;
 import javax.swing.*;
 import java.awt.*;
 import java.time.LocalDate;
-
+/**
+ * Clase PanelUno que se utilizará para seleccionar el origen y destino de un recorrido
+ */
 public class PanelUno extends JPanel {
     private JButton buscar;
     private JButton seleccionar;
@@ -28,7 +30,12 @@ public class PanelUno extends JPanel {
     private CrearRecorrido santi_chillan = new CrearRecorrido(Localidades.SANTIAGO, Localidades.CHILLAN, LocalDate.now());
     private CrearRecorrido conce_santi = new CrearRecorrido(Localidades.CONCEPCION, Localidades.SANTIAGO, LocalDate.now());
     private CrearRecorrido santi_conce = new CrearRecorrido(Localidades.SANTIAGO, Localidades.CONCEPCION, LocalDate.now());
-
+    /**
+     * Constructor de la clase PanelUno
+     * @param listener Listener que se encargará de cambiar de panel
+     * @throws MismaLocalidadException
+     * @throws LocalidadNullException
+     */
     public PanelUno(CambioPanelListener listener) throws MismaLocalidadException, LocalidadNullException {
         this.listener = listener;
         setLayout(new FlowLayout());
@@ -46,7 +53,9 @@ public class PanelUno extends JPanel {
 
         configActionListener();
     }
-
+    /**
+     * Método que configura los action listener de los botones y asi no hacerlo dentro del constructor
+     */
     private void configActionListener() {
         buscar.addActionListener(e -> {
             Localidades origen = menuOrigen.getOrigen();
@@ -94,26 +103,12 @@ public class PanelUno extends JPanel {
             busSeleccionado = seleccionDeBus.getBusSeleccionado();
         });
     }
-
+    /**
+     * Método que retorna el bus seleccionado
+     * @return Bus seleccionado
+     */
     public Bus getBusSeleccionado() {
         return busSeleccionado;
     }
 
-    /*public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            JFrame frame = new JFrame("Ventana");
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setSize(400, 200);
-
-            try {
-                PanelUno panelUno = new PanelUno();
-                frame.add(panelUno);
-            } catch (Exception e) {
-                e.printStackTrace();
-                JOptionPane.showMessageDialog(null, "Error al inicializar el panel: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-            }
-
-            frame.setVisible(true);
-        });
-    }*/
 }

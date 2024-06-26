@@ -39,18 +39,27 @@ public class UnPiso extends Bus{
      * Método que retorna un nuevo oasaje
      * @param numero Número del asiento.
      * @param precioTotal Precio total del pasaje.
+     * @param bus Bus en el que se compra el pasaje.
      * @return Pasaje nuevo.
      */
     @Override
     public Pasaje comprarPasaje(int numero, int precioTotal, Bus bus){
         return new Pasaje(primerPiso.adquirirAsiento(numero), precioTotal, bus);
     }
-
+    /**
+     * Método que retorna un ArrayList con los asientos de un piso.
+     * @param numero Número del piso.
+     * @return ArrayList con los asientos de un piso.
+     */
     @Override
     public ArrayList<Asiento> getAsientos(int numero) {
         return primerPiso.getArrayAsientos();
     }
 
+    /**
+     * Método que retorna un String con los datos del bus.
+     * @return String con los datos del bus.
+     */
     @Override
     public String toString() {
         int precioTotal = getPrecioTotal(1);

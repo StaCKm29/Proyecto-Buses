@@ -6,11 +6,15 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-
+/**
+ * Clase MenuDestino que se utilizará para seleccionar el destino de un recorrido
+ */
 public class MenuDestino extends JPanel implements ItemListener {
     private Choice destino;
     private Localidades localidad;
-
+    /**
+     * Constructor de la clase MenuDestino
+     */
     public MenuDestino() {
         JLabel nombre = new JLabel("Destino: ");
         add(nombre);
@@ -26,6 +30,10 @@ public class MenuDestino extends JPanel implements ItemListener {
         add(destino);
     }
 
+    /**
+     * Metodo que mantiene actualizada la localidad de destino
+     * @param e Evento que se activa al seleccionar un choice
+     */
     @Override
     public void itemStateChanged(ItemEvent e) {
         if(e.getSource() == destino) {
@@ -46,7 +54,10 @@ public class MenuDestino extends JPanel implements ItemListener {
             }
         }
     }
-
+    /**
+     * Método que retorna la localidad seleccionada
+     * @return Localidad seleccionada
+     */
     public Localidades getDestino() {
         return localidad;
     }

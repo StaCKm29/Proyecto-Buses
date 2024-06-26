@@ -59,7 +59,10 @@ public class Nivel<T extends Asiento> {
         }
         return asientosDisponibles;
     }
-
+    /**
+     * Método que retorna los asientos del nivel.
+     * @return ArrayList de asientos.
+     */
     public ArrayList<T> getArrayAsientos(){
         return asientos;
     }

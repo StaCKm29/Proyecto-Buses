@@ -6,7 +6,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
-
+/**
+ * Clase SeleccionDeBus que se utilizará para seleccionar un bus
+ */
 public class SeleccionDeBus extends JPanel {
     private CardLayout cardLayout;
     private JPanel cardPanel;
@@ -28,37 +30,16 @@ public class SeleccionDeBus extends JPanel {
         // Añadir panel de selección de bus al cardPanel
         cardPanel.add(panelSeleccionDeBus, "SeleccionDeBus");
 
-        // Añadir ActionListener al botón de selección
-/*        seleccionar.addActionListener(e -> {
-            Bus bus = busesDisponibles.getSelectedValue();
-            if (bus != null) {
-                SeleccionDeAsiento seleccionDeAsiento = new SeleccionDeAsiento(bus);
-                cardPanel.add(seleccionDeAsiento, "SeleccionDeAsiento");
-                cardLayout.show(cardPanel, "SeleccionDeAsiento");
-            } else {
-                JOptionPane.showMessageDialog(this, "Seleccione un bus primero", "Error", JOptionPane.ERROR_MESSAGE);
-            }
-        });*/
-
         // Añadir el cardPanel al SeleccionDeBus
         setLayout(new BorderLayout());
         add(cardPanel, BorderLayout.CENTER);
     }
-
+    /**
+     * Método que retorna el bus seleccionado
+     * @return Bus seleccionado
+     */
     public Bus getBusSeleccionado() {
         return busesDisponibles.getSelectedValue();
     }
 
-    public static void main(String[] args) throws MismaLocalidadException, LocalidadNullException {
-        JFrame frame = new JFrame("Seleccion de Bus");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(400, 200);
-
-        CrearRecorrido recorrido = new CrearRecorrido(Localidades.FRUTILLAR, Localidades.SANTIAGO, LocalDate.now());
-
-        SeleccionDeBus seleccionDeBus = new SeleccionDeBus(recorrido.getBuses());
-        frame.add(seleccionDeBus);
-
-        frame.setVisible(true);
-    }
 }
