@@ -3,10 +3,8 @@ package vistas;
 import modelos.LocalidadNullException;
 import modelos.MismaLocalidadException;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.io.IOException;
 
 /**
  * Clase Ventana que se utilizará para mostrar la interfaz gráfica

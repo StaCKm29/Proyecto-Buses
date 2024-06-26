@@ -1,0 +1,10 @@
+Origen: Concepción
+Destino: Frutillar
+Nombre: Andrés_Martínez
+Rut: 23.452.567-3
+Asiento: 2
+Precio: 18000
+Hora de salida: 06:10
+Fecha de salida: 2024-06-27
+Recuerde llegar al terminal con 15 minutos de anticipación
+Gracias por preferirnos
