@@ -6,7 +6,6 @@ package modelos;
 public abstract class Asiento {
     private int numero;
     private boolean estado;
-
     /**
      * Constructor de la clase Asiento.
      * @param numero Número del asiento.

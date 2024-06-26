@@ -9,8 +9,6 @@ import java.util.ArrayList;
  * Clase abstracta Bus que representa un bus.
  */
 public abstract class Bus {
-    private int patente;
-    private int capacidad;
     private int precioBase;
     private String origen;
     private String destino;
