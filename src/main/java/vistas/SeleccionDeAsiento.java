@@ -16,14 +16,26 @@ public class SeleccionDeAsiento extends JPanel {
     private JButton botonCompra;
     private Cliente cliente;
     private Bus bus;
+    private CambioPanelListener listener;
 
-    public SeleccionDeAsiento(Bus bus) {
+    public SeleccionDeAsiento(Bus bus, CambioPanelListener listener) {
+        this.listener = listener;
         this.bus = bus;
+
         this.botonCompra = new JButton("COMPRAR");
+        botonCompra.addActionListener(e -> {
+            
+            comprarPasajes();
+            listener.volverABuscador();
+            JOptionPane.showMessageDialog(this, "Compra realizada con exito", "Compra", JOptionPane.INFORMATION_MESSAGE);
+        });
+
         datosPersonales = new DatosPersonales();
+
         add(botonCompra);
         add(datosPersonales);
-        if(bus.getClass() == UnPiso.class) {
+
+        if (bus.getClass() == UnPiso.class) {
             asientosDelBus = bus.getAsientos(1);
             pisoUno = new AsientosEnUnPiso(asientosDelBus, "Piso 1");
             add(pisoUno);
@@ -39,24 +51,28 @@ public class SeleccionDeAsiento extends JPanel {
 
     }
 
-    public JButton getBotonCompra(){
-        return botonCompra;
-    }
 
-    private void comprarPasajes(){
-        if(bus.getClass() == UnPiso.class){
+    private void comprarPasajes() {
+        if (bus.getClass() == UnPiso.class) {
             asientosSeleccionados.addAll(pisoUno.getAsientosSeleccionados());
-        }
-        else{
+        } else {
             asientosSeleccionados.addAll(pisoUno.getAsientosSeleccionados());
             asientosSeleccionados.addAll(pisoDos.getAsientosSeleccionados());
         }
         cliente = new Cliente(datosPersonales.getNombre(), datosPersonales.getApellido(), datosPersonales.getRut(), bus, asientosSeleccionados);
+        if (bus.getClass() == UnPiso.class) {
+            pisoUno.actualizarAsientos();
+        } else {
+            pisoUno.actualizarAsientos();
+            pisoDos.actualizarAsientos();
+        }
+        revalidate();
+        repaint();
     }
 
+}
 
-
-    public static void main(String[] args) {
+   /* public static void main(String[] args) {
         JFrame frame = new JFrame("Seleccion de Asiento");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(400, 200);
@@ -73,5 +89,5 @@ public class SeleccionDeAsiento extends JPanel {
         frame.add(seleccionDeAsiento);
 
         frame.setVisible(true);
-    }
-}
+    }*/
+

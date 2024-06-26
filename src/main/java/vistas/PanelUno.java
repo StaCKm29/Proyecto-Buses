@@ -8,10 +8,13 @@ import java.time.LocalDate;
 
 public class PanelUno extends JPanel {
     private JButton buscar;
+    private JButton seleccionar;
     private SeleccionDeBus seleccionDeBus;
     private CrearRecorrido recorrido;
     private MenuOrigen menuOrigen;
     private MenuDestino menuDestino;
+    private Bus busSeleccionado;
+    private CambioPanelListener listener;
 
     private CrearRecorrido fruti_chillan = new CrearRecorrido(Localidades.FRUTILLAR, Localidades.CHILLAN, LocalDate.now());
     private CrearRecorrido chillan_fruti = new CrearRecorrido(Localidades.CHILLAN, Localidades.FRUTILLAR, LocalDate.now());
@@ -26,21 +29,25 @@ public class PanelUno extends JPanel {
     private CrearRecorrido conce_santi = new CrearRecorrido(Localidades.CONCEPCION, Localidades.SANTIAGO, LocalDate.now());
     private CrearRecorrido santi_conce = new CrearRecorrido(Localidades.SANTIAGO, Localidades.CONCEPCION, LocalDate.now());
 
-    public PanelUno() throws MismaLocalidadException, LocalidadNullException {
+    public PanelUno(CambioPanelListener listener) throws MismaLocalidadException, LocalidadNullException {
+        this.listener = listener;
         setLayout(new FlowLayout());
 
         buscar = new JButton("Buscar");
         menuOrigen = new MenuOrigen();
         menuDestino = new MenuDestino();
+        seleccionar = new JButton("Seleccionar");
+        seleccionar.addActionListener(e -> listener.cambiarASeleccionAsiento());
 
         add(menuOrigen);
         add(menuDestino);
         add(buscar);
+        add(seleccionar);
 
-        configureActionListeners();
+        configActionListener();
     }
 
-    private void configureActionListeners() {
+    private void configActionListener() {
         buscar.addActionListener(e -> {
             Localidades origen = menuOrigen.getOrigen();
             Localidades destino = menuDestino.getDestino();
@@ -74,22 +81,25 @@ public class PanelUno extends JPanel {
                     }
                 }
             }
+            if(seleccionDeBus!=null){
+                remove(seleccionDeBus);
+            }
             seleccionDeBus = new SeleccionDeBus(recorrido.getBuses());
             add(seleccionDeBus);
             revalidate();
             repaint();
         });
+
+        seleccionar.addActionListener(e -> {
+            busSeleccionado = seleccionDeBus.getBusSeleccionado();
+        });
     }
 
     public Bus getBusSeleccionado() {
-        if (seleccionDeBus != null) {
-            return seleccionDeBus.getBusSeleccionado();
-        } else {
-            return null;
-        }
+        return busSeleccionado;
     }
 
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
             JFrame frame = new JFrame("Ventana");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -105,5 +115,5 @@ public class PanelUno extends JPanel {
 
             frame.setVisible(true);
         });
-    }
+    }*/
 }

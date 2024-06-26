@@ -40,7 +40,7 @@ public class ImageAsiento extends JPanel implements MouseListener {
         addMouseListener(this);
     }
 
-    private void updateIcon() {
+    public void updateIcon() {
         if (asiento.getEstado()) {
             label.setIcon(iconOcupado);
         } else if (seleccionado) {
