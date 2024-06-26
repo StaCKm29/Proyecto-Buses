@@ -24,6 +24,7 @@ public class SeleccionDeAsiento extends JPanel {
 
         this.botonCompra = new JButton("COMPRAR");
         botonCompra.addActionListener(e -> {
+            
             comprarPasajes();
             listener.volverABuscador();
             JOptionPane.showMessageDialog(this, "Compra realizada con exito", "Compra", JOptionPane.INFORMATION_MESSAGE);
