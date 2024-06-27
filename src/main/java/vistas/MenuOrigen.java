@@ -1,6 +1,5 @@
 package vistas;
 
-import modelos.LocalidadNullException;
 import modelos.Localidades;
 
 import javax.swing.*;

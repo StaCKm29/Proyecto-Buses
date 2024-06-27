@@ -36,10 +36,8 @@ public class PanelUno extends JPanel {
     /**
      * Constructor de la clase PanelUno
      * @param listener Listener que se encargará de cambiar de panel
-     * @throws MismaLocalidadException
-     * @throws LocalidadNullException
      */
-    public PanelUno(CambioPanelListener listener) throws MismaLocalidadException, LocalidadNullException, MismasLocalidadesException {
+    public PanelUno(CambioPanelListener listener) {
         this.listener = listener;
         setLayout(new FlowLayout());
 
@@ -125,7 +123,7 @@ public class PanelUno extends JPanel {
         seleccionar.addActionListener(e -> {
             try {
                 busSeleccionado = seleccionDeBus.getBusSeleccionado();
-            } catch (BusSeleccionadoNull ex) {
+            } catch (BusSeleccionadoNullException ex) {
                 JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             }
         });

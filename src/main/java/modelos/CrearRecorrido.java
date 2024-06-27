@@ -20,16 +20,8 @@ public class CrearRecorrido {
      * @param partida Localidad de partida.
      * @param destino Localidad de destino.
      * @param fechaViaje Fecha de viaje.
-     * @throws MismaLocalidadException Si la partida y el destino son iguales.
-     * @throws LocalidadNullException Si alguna localidad no ha sido instanciada aún.
      */
-    public CrearRecorrido(Localidades partida, Localidades destino, LocalDate fechaViaje) throws MismaLocalidadException, LocalidadNullException {
-        if(partida == null || destino == null) {
-            throw new LocalidadNullException("La partida y el destino no pueden ser nulos");
-        }else if(partida == destino) {
-            throw new MismaLocalidadException("La partida y el destino no pueden ser iguales");
-        }
-
+    public CrearRecorrido(Localidades partida, Localidades destino, LocalDate fechaViaje) {
         switch (partida){
             case FRUTILLAR -> {
                 switch (destino){

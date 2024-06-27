@@ -1,17 +1,12 @@
 package vistas;
 
-import modelos.LocalidadNullException;
-import modelos.MismaLocalidadException;
-
 import javax.swing.*;
 
 public class Main {
-    public static void main(String[] args) throws MismaLocalidadException, LocalidadNullException {
+    public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
             try {
                 new Ventana();
-            } catch (MismaLocalidadException | LocalidadNullException e) {
-                e.printStackTrace();
             } catch (MismasLocalidadesException e) {
                 throw new RuntimeException(e);
             }

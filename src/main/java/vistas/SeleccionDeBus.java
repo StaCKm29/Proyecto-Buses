@@ -4,7 +4,6 @@ import modelos.*;
 
 import javax.swing.*;
 import java.awt.*;
-import java.time.LocalDate;
 import java.util.ArrayList;
 /**
  * Clase SeleccionDeBus que se utilizará para seleccionar un bus
@@ -38,9 +37,9 @@ public class SeleccionDeBus extends JPanel {
      * Método que retorna el bus seleccionado
      * @return Bus seleccionado
      */
-    public Bus getBusSeleccionado() throws BusSeleccionadoNull{
+    public Bus getBusSeleccionado() throws BusSeleccionadoNullException {
         if (busesDisponibles.getSelectedValue() == null) {
-            throw new BusSeleccionadoNull("No se ha seleccionado un bus.");
+            throw new BusSeleccionadoNullException("No se ha seleccionado un bus.");
         }
         return busesDisponibles.getSelectedValue();
     }

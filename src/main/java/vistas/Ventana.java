@@ -1,8 +1,5 @@
 package vistas;
 
-import modelos.LocalidadNullException;
-import modelos.MismaLocalidadException;
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -13,16 +10,15 @@ public class Ventana extends JFrame {
     private PanelPrincipal panelPrincipal;
     /**
      * Constructor de la clase Ventana
-     * @throws MismaLocalidadException
-     * @throws LocalidadNullException
+     * @throws MismasLocalidadesException
      */
-    public Ventana() throws MismaLocalidadException, LocalidadNullException, MismasLocalidadesException {
+    public Ventana() throws MismasLocalidadesException {
         setLayout(new BorderLayout());
         panelPrincipal = new PanelPrincipal();
         add(panelPrincipal, BorderLayout.CENTER);
         setContentPane(panelPrincipal);
         this.setTitle("Ventana");
-        setSize(400, 200);
+        setSize(700, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         this.setVisible(true);

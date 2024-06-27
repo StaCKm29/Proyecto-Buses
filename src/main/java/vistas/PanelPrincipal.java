@@ -1,8 +1,5 @@
 package vistas;
 
-import modelos.LocalidadNullException;
-import modelos.MismaLocalidadException;
-
 import javax.swing.*;
 import java.awt.*;
 /**
@@ -15,10 +12,9 @@ public class PanelPrincipal extends JPanel implements CambioPanelListener {
     private SeleccionDeAsiento seleccionDeAsiento;
     /**
      * Constructor de la clase PanelPrincipal
-     * @throws MismaLocalidadException
-     * @throws LocalidadNullException
+     * @throws MismasLocalidadesException
      */
-    public PanelPrincipal() throws MismaLocalidadException, LocalidadNullException, MismasLocalidadesException {
+    public PanelPrincipal() throws MismasLocalidadesException {
         setLayout(new BorderLayout());
         panelUno = new PanelUno(this);
 
