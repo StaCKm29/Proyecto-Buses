@@ -10,7 +10,7 @@ import java.time.LocalDate;
 /**
  * Clase PanelUno que se utilizará para seleccionar el origen y destino de un recorrido
  */
-public class PanelUno extends JPanel {
+public class Buscador extends JPanel {
     private JButton buscar;
     private JButton seleccionar;
     private SeleccionDeBus seleccionDeBus;
@@ -37,7 +37,7 @@ public class PanelUno extends JPanel {
      * Constructor de la clase PanelUno
      * @param listener Listener que se encargará de cambiar de panel
      */
-    public PanelUno(CambioPanelListener listener) {
+    public Buscador(CambioPanelListener listener) {
         this.listener = listener;
         setLayout(new FlowLayout());
 
@@ -50,7 +50,6 @@ public class PanelUno extends JPanel {
         add(menuOrigen);
         add(menuDestino);
         add(buscar);
-        add(seleccionar);
         try {
             imagenFondo = ImageIO.read(getClass().getResource("/imagenFondo.png"));
         } catch (IOException e) {
@@ -116,6 +115,7 @@ public class PanelUno extends JPanel {
 
             seleccionDeBus = new SeleccionDeBus(recorrido.getBuses());
             add(seleccionDeBus);
+            add(seleccionar);
             revalidate();
             repaint();
         });

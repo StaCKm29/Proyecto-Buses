@@ -1,0 +1,10 @@
+Origen: Frutillar
+Destino: Santiago
+Nombre: rwer_fweer
+Rut: wre
+Asiento: 1
+Precio: 28000
+Hora de salida: 17:19
+Fecha de salida: 2024-06-27
+Recuerde llegar al terminal con 15 minutos de anticipación
+Gracias por preferirnos

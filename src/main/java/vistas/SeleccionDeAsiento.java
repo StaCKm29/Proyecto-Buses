@@ -18,6 +18,9 @@ public class SeleccionDeAsiento extends JPanel {
     private Cliente cliente;
     private Bus bus;
     private CambioPanelListener listener;
+    private MenuInformacion menuInformacion;
+    private ArrayList<AsientosEnUnPiso> arregloPisos = new ArrayList<>();
+
     /**
      * Constructor de la clase SeleccionDeAsiento
      * @param bus Bus a seleccionar asientos
@@ -65,20 +68,32 @@ public class SeleccionDeAsiento extends JPanel {
 
         datosPersonales = new DatosPersonales();
 
+
+
+        menuInformacion = new MenuInformacion(bus, arregloPisos);
+        if (bus.getClass() == UnPiso.class) {
+            asientosDelBus = bus.getAsientos(1);
+            pisoUno = new AsientosEnUnPiso(asientosDelBus, "Piso 1", Color.PINK, menuInformacion);
+            add(pisoUno);
+            arregloPisos.add(pisoUno);
+        } else {
+            asientosDelBus = bus.getAsientos(1);
+            pisoUno = new AsientosEnUnPiso(asientosDelBus, "Piso 1", Color.PINK, menuInformacion);
+            asientosDelBus = bus.getAsientos(2);
+            pisoDos = new AsientosEnUnPiso(asientosDelBus, "Piso 2", Color.cyan, menuInformacion);
+            add(pisoUno);
+            add(pisoDos);
+            arregloPisos.add(pisoUno);
+            arregloPisos.add(pisoDos);
+        }
+
+
+        add(menuInformacion);
         add(botonCompra);
         add(datosPersonales);
 
-        if (bus.getClass() == UnPiso.class) {
-            asientosDelBus = bus.getAsientos(1);
-            pisoUno = new AsientosEnUnPiso(asientosDelBus, "Piso 1", Color.PINK);
-            add(pisoUno);
-        } else {
-            asientosDelBus = bus.getAsientos(1);
-            pisoUno = new AsientosEnUnPiso(asientosDelBus, "Piso 1", Color.PINK);
-            asientosDelBus = bus.getAsientos(2);
-            pisoDos = new AsientosEnUnPiso(asientosDelBus, "Piso 2", Color.cyan);
-            add(pisoUno);
-            add(pisoDos);
+        for(AsientosEnUnPiso Asien: arregloPisos){
+            add(Asien);
         }
     }
 
@@ -107,24 +122,11 @@ public class SeleccionDeAsiento extends JPanel {
         repaint();
     }
 
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+    }
+
+
 }
-
-   /* public static void main(String[] args) {
-        JFrame frame = new JFrame("Seleccion de Asiento");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(400, 200);
-        //Bus bus = new UnPiso(2000, TipoAsiento.SEMICAMA);
-        Bus bus= new DosPisos(2000, TipoAsiento.SEMICAMA, TipoAsiento.SEMICAMA);
-        LocalTime hora = LocalTime.of(10, 0);
-        LocalDate fecha = LocalDate.of(2024, 12, 12);
-        bus.setHoraSalida(hora);
-        bus.setOrigen(Localidades.SANTIAGO.toString());
-        bus.setDestino(Localidades.CONCEPCION.toString());
-        bus.setFechaSalida(fecha);
-        SeleccionDeAsiento seleccionDeAsiento = new SeleccionDeAsiento(bus);
-
-        frame.add(seleccionDeAsiento);
-
-        frame.setVisible(true);
-    }*/
 

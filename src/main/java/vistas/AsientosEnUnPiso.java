@@ -22,13 +22,13 @@ public class AsientosEnUnPiso extends JPanel {
      * @param asientos ArrayList de asientos
      * @param piso String con el numero de piso del bus
      */
-    public AsientosEnUnPiso(ArrayList<Asiento> asientos, String piso, Color color) {
+    public AsientosEnUnPiso(ArrayList<Asiento> asientos, String piso, Color color, MenuInformacion menuInformacion) {
         this.asientos = asientos;
         //Creacion de arreglo gráfico
         this.asientosgraficos = new ArrayList<>();
         this.setBackground(color);
         for(Asiento asiento: asientos){
-            ImageAsiento asientoGrafico = new ImageAsiento(asiento , asientosSeleccionados);
+            ImageAsiento asientoGrafico = new ImageAsiento(asiento , asientosSeleccionados,menuInformacion);
             asientosgraficos.add(asientoGrafico);
         }
 

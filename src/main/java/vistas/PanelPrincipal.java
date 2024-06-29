@@ -8,7 +8,7 @@ import java.awt.*;
 public class PanelPrincipal extends JPanel implements CambioPanelListener {
     private CardLayout cardLayout;
     private JPanel cardPanel;
-    private PanelUno panelUno;
+    private Buscador panelUno;
     private SeleccionDeAsiento seleccionDeAsiento;
     /**
      * Constructor de la clase PanelPrincipal
@@ -16,7 +16,7 @@ public class PanelPrincipal extends JPanel implements CambioPanelListener {
      */
     public PanelPrincipal() throws MismasLocalidadesException {
         setLayout(new BorderLayout());
-        panelUno = new PanelUno(this);
+        panelUno = new Buscador(this);
 
         cardLayout = new CardLayout();
         cardPanel = new JPanel(cardLayout);
