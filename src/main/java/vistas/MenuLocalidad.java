@@ -7,37 +7,38 @@ import java.awt.*;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 /**
- * Clase MenuOrigen que se utilizará para seleccionar el origen de un recorrido
+ * Clase MenuLocalidad que se utilizará para seleccionar el origen o destino de un recorrido.
  */
-public class MenuOrigen extends JPanel implements ItemListener {
-    private Choice origen;
+public class MenuLocalidad extends JPanel implements ItemListener {
+    private Choice opciones;
     private Localidades localidad;
+
     /**
-     * Constructor de la clase MenuOrigen
+     * Constructor de la clase MenuLocalidad
      */
-    public MenuOrigen() {
+    public MenuLocalidad() {
         JLabel nombre = new JLabel("Origen: ");
         add(nombre);
-        origen = new Choice();
-        origen.add("Seleccione una localidad");
-        origen.add("Frutillar");
-        origen.add("Concepción");
-        origen.add("Chillán");
-        origen.add("Santiago");
+        opciones = new Choice();
+        opciones.add("Seleccione una localidad");
+        opciones.add("Frutillar");
+        opciones.add("Concepción");
+        opciones.add("Chillán");
+        opciones.add("Santiago");
 
-        origen.addItemListener(this);
+        opciones.addItemListener(this);
 
-        add(origen);
+        add(opciones);
     }
 
     /**
-     * Metodo que mantiene actualizada la localidad de origen
-     * @param e Evento que se activa al seleccionar un choice
+     * Metodo que mantiene actualizada la localidad de origen o destino.
+     * @param e Evento que se activa al seleccionar un choice.
      */
     @Override
     public void itemStateChanged(ItemEvent e) {
-        if(e.getSource() == origen) {
-            String seleccion = origen.getSelectedItem();
+        if(e.getSource() == opciones) {
+            String seleccion = opciones.getSelectedItem();
             switch(seleccion) {
                 case "Frutillar":
                     localidad = Localidades.FRUTILLAR;
@@ -54,13 +55,15 @@ public class MenuOrigen extends JPanel implements ItemListener {
             }
         }
     }
+
     /**
      * Método que retorna la localidad seleccionada
      * @return Localidad seleccionada
+     * @throws LocalidadesNullException Excepción que se lanza si no se ha seleccionado una localidad.
      */
-    public Localidades getOrigen() throws LocalidadesNullException {
+    public Localidades getLocalidad() throws LocalidadesNullException {
         if(localidad == null) {
-            throw new LocalidadesNullException("No se ha seleccionado una localidad de origen");
+            throw new LocalidadesNullException("No se ha seleccionado una localidad.");
         }
         return localidad;
     }

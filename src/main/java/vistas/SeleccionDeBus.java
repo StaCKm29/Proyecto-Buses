@@ -13,6 +13,10 @@ public class SeleccionDeBus extends JPanel {
     private JPanel cardPanel;
     private JList<Bus> busesDisponibles;
 
+    /**
+     * Constructor de la clase SeleccionDeBus
+     * @param buses Lista de buses acorde a un recorrido especifico.
+     */
     public SeleccionDeBus(ArrayList<Bus> buses) {
         cardLayout = new CardLayout();
         cardPanel = new JPanel(cardLayout);
@@ -33,9 +37,11 @@ public class SeleccionDeBus extends JPanel {
         setLayout(new BorderLayout());
         add(cardPanel, BorderLayout.CENTER);
     }
+
     /**
-     * Método que retorna el bus seleccionado
-     * @return Bus seleccionado
+     * Método que retorna el bus seleccionado.
+     * @return Bus seleccionado.
+     * @throws BusSeleccionadoNullException Excepción que se lanza si no se ha seleccionado un bus.
      */
     public Bus getBusSeleccionado() throws BusSeleccionadoNullException {
         if (busesDisponibles.getSelectedValue() == null) {

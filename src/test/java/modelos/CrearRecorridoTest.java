@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class CrearRecorridoTest {
     private CrearRecorrido recorrido;
     @BeforeEach
-    void setUp() throws MismaLocalidadException, LocalidadNullException {
+    void setUp() {
         Localidades Inicio = Localidades.CHILLAN;
         Localidades Destino = Localidades.CONCEPCION;
         this.recorrido = new CrearRecorrido(Inicio, Destino, LocalDate.now());

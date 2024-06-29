@@ -3,20 +3,21 @@ package vistas;
 import javax.swing.*;
 import java.awt.*;
 /**
- * Clase PanelPrincipal que se utilizará para manejar los paneles de la aplicación
+ * Clase PanelPrincipal que se utilizará para manejar los paneles de la aplicación.
+ * Cambia desde Panel Buscador a SeleccionDeAsiento y viciversa.
  */
 public class PanelPrincipal extends JPanel implements CambioPanelListener {
     private CardLayout cardLayout;
     private JPanel cardPanel;
-    private PanelUno panelUno;
+    private Buscador panelUno;
     private SeleccionDeAsiento seleccionDeAsiento;
+
     /**
      * Constructor de la clase PanelPrincipal
-     * @throws MismasLocalidadesException
      */
-    public PanelPrincipal() throws MismasLocalidadesException {
+    public PanelPrincipal() {
         setLayout(new BorderLayout());
-        panelUno = new PanelUno(this);
+        panelUno = new Buscador(this);
 
         cardLayout = new CardLayout();
         cardPanel = new JPanel(cardLayout);
@@ -31,8 +32,9 @@ public class PanelPrincipal extends JPanel implements CambioPanelListener {
         //El primero en mostrarse al correr el programa
         cardLayout.show(cardPanel, "Buscador");
     }
+
     /**
-     * Método que cambia el panel a la selección de asientos
+     * Método que cambia el panel a la selección de asientos.
      */
     @Override
     public void cambiarASeleccionAsiento() {
@@ -40,8 +42,9 @@ public class PanelPrincipal extends JPanel implements CambioPanelListener {
         cardPanel.add(seleccionDeAsiento, "Seleccion De Asientos");
         cardLayout.show(cardPanel, "Seleccion De Asientos");
     }
+
     /**
-     * Método que cambia el panel al buscador
+     * Método que cambia el panel al buscador.
      */
     @Override
     public void volverABuscador() {

@@ -58,16 +58,16 @@ public class Pasaje {
     public void generarPasajeTxt(){
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/resources/" + nombre + "_" + apellido + "Asiento_"+ asiento.getNumero() + ".txt"));
-            writer.write("Origen: " + origen + "\n");
-            writer.write("Destino: " + destino + "\n");
-            writer.write("Nombre: " + nombre +"_"+ apellido + "\n");
-            writer.write("Rut: " + rut + "\n");
-            writer.write("Asiento: " + asiento.getNumero() + "\n");
+            writer.write("Origen: " + origen + ".\n");
+            writer.write("Destino: " + destino + ".\n");
+            writer.write("Nombre: " + nombre +"_"+ apellido + ".\n");
+            writer.write("Rut: " + rut + ".\n");
+            writer.write("Asiento: " + asiento.getNumero() + ".\n");
             writer.write("Precio: " + precioTotal + "\n");
             writer.write("Hora de salida: " + horaSalida.toString() + "\n");
             writer.write("Fecha de salida: " + fechaSalida.toString() + "\n");
-            writer.write("Recuerde llegar al terminal con 15 minutos de anticipación\n");
-            writer.write("Gracias por preferirnos");
+            writer.write("Recuerde llegar al terminal con 15 minutos de anticipación.\n");
+            writer.write("Gracias por preferirnos.");
             writer.close();
         } catch (IOException e) {
             throw new RuntimeException(e);

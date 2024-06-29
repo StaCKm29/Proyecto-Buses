@@ -2,24 +2,21 @@ package vistas;
 
 import modelos.*;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.io.IOException;
 import java.time.LocalDate;
 /**
- * Clase PanelUno que se utilizará para seleccionar el origen y destino de un recorrido
+ * Clase Buscador que se utilizará para seleccionar el origen y destino de un recorrido
  */
-public class PanelUno extends JPanel {
+public class Buscador extends JPanel {
     private JButton buscar;
     private JButton seleccionar;
     private SeleccionDeBus seleccionDeBus;
     private CrearRecorrido recorrido;
-    private MenuOrigen menuOrigen;
-    private MenuDestino menuDestino;
+    private MenuLocalidad menuOrigen;
+    private MenuLocalidad menuDestino;
     private Bus busSeleccionado;
     private CambioPanelListener listener;
-    private Image imagenFondo;
 
     private CrearRecorrido fruti_chillan = new CrearRecorrido(Localidades.FRUTILLAR, Localidades.CHILLAN, LocalDate.now());
     private CrearRecorrido chillan_fruti = new CrearRecorrido(Localidades.CHILLAN, Localidades.FRUTILLAR, LocalDate.now());
@@ -33,34 +30,31 @@ public class PanelUno extends JPanel {
     private CrearRecorrido santi_chillan = new CrearRecorrido(Localidades.SANTIAGO, Localidades.CHILLAN, LocalDate.now());
     private CrearRecorrido conce_santi = new CrearRecorrido(Localidades.CONCEPCION, Localidades.SANTIAGO, LocalDate.now());
     private CrearRecorrido santi_conce = new CrearRecorrido(Localidades.SANTIAGO, Localidades.CONCEPCION, LocalDate.now());
+
     /**
-     * Constructor de la clase PanelUno
-     * @param listener Listener que se encargará de cambiar de panel
+     * Constructor de la clase Buscador.
+     * @param listener Listener que se encargará de cambiar de panel.
      */
-    public PanelUno(CambioPanelListener listener) {
+    public Buscador(CambioPanelListener listener) {
+        this.setOpaque(false);
         this.listener = listener;
         setLayout(new FlowLayout());
 
         buscar = new JButton("Buscar");
-        menuOrigen = new MenuOrigen();
-        menuDestino = new MenuDestino();
+        menuOrigen = new MenuLocalidad();
+        menuDestino = new MenuLocalidad();
         seleccionar = new JButton("Seleccionar");
         seleccionar.addActionListener(e -> listener.cambiarASeleccionAsiento());
 
         add(menuOrigen);
         add(menuDestino);
         add(buscar);
-        add(seleccionar);
-        try {
-            imagenFondo = ImageIO.read(getClass().getResource("/imagenFondo.png"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
         configActionListener();
     }
+
     /**
-     * Método que configura los action listener de los botones y asi no hacerlo dentro del constructor
+     * Método que configura los ActionListener de los botones y asi no hacerlo dentro del constructor
      */
     private void configActionListener() {
         buscar.addActionListener(e -> {
@@ -68,8 +62,8 @@ public class PanelUno extends JPanel {
             Localidades destino = null;
 
             try {
-                origen = menuOrigen.getOrigen();
-                destino = menuDestino.getDestino();
+                origen = menuOrigen.getLocalidad();
+                destino = menuDestino.getLocalidad();
                 if (origen == destino){
                     throw new MismasLocalidadesException("El origen y el destino no pueden ser la misma localidad");
                 }
@@ -116,6 +110,7 @@ public class PanelUno extends JPanel {
 
             seleccionDeBus = new SeleccionDeBus(recorrido.getBuses());
             add(seleccionDeBus);
+            add(seleccionar);
             revalidate();
             repaint();
         });
@@ -128,17 +123,12 @@ public class PanelUno extends JPanel {
             }
         });
     }
+
     /**
      * Método que retorna el bus seleccionado
      * @return Bus seleccionado
      */
     public Bus getBusSeleccionado() {
         return busSeleccionado;
-    }
-
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        g.drawImage(imagenFondo, 0, 0, getWidth(), getHeight(), this);
     }
 }

@@ -1,7 +1,6 @@
 package vistas;
 
 import modelos.Asiento;
-import modelos.TipoAsiento;
 
 import javax.swing.*;
 import java.awt.*;
@@ -20,6 +19,7 @@ public class ImageAsiento extends JPanel implements MouseListener {
     private JLabel label;
     private boolean seleccionado;
     private JWindow ventanita;
+
     /**
      * Constructor de la clase ImageAsiento
      * @param asiento Asiento a mostrar
@@ -45,6 +45,7 @@ public class ImageAsiento extends JPanel implements MouseListener {
         add(label);
         addMouseListener(this);
     }
+
     /**
      * Método que actualiza el icono del asiento
      */
@@ -57,9 +58,11 @@ public class ImageAsiento extends JPanel implements MouseListener {
             label.setIcon(iconDisponible);
         }
     }
+
     /**
      * Método que modifica el ArrayList de los asientos seleccionados si es que el asiento es seleccionado
-     * o deseleccionado
+     * o deseleccionado.
+     * @param e Evento de mouse.
      */
     @Override
     public void mouseClicked(MouseEvent e) {
@@ -81,8 +84,10 @@ public class ImageAsiento extends JPanel implements MouseListener {
     @Override
     public void mouseReleased(MouseEvent e) {
     }
+
     /**
-     * Método que muestra información del asiento al pasar el mouse por encima
+     * Método que muestra información del asiento al pasar el mouse por encima.
+     * @param e Evento de mouse.
      */
     @Override
     public void mouseEntered(MouseEvent e) {
@@ -94,8 +99,10 @@ public class ImageAsiento extends JPanel implements MouseListener {
         ventanita.setLocation(cursor.x, cursor.y);
         ventanita.setVisible(true);
     }
+
     /**
      * Método que cierra la ventana de información al salir del asiento
+     * @param e Evento de mouse.
      */
     @Override
     public void mouseExited(MouseEvent e) {

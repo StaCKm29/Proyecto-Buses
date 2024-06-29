@@ -1,16 +1,12 @@
 package vistas;
 
 import modelos.Asiento;
-import modelos.Bus;
-import modelos.TipoAsiento;
-import modelos.UnPiso;
 
-import javax.lang.model.element.NestingKind;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 /**
- * Clase AsientosEnUnPiso que se utilizará para mostrar los asientos de un piso de un bus
+ * Clase AsientosEnUnPiso que se utilizará para mostrar los asientos de un piso de un bus.
  */
 public class AsientosEnUnPiso extends JPanel {
     private ArrayList<Asiento> asientos;
@@ -22,11 +18,11 @@ public class AsientosEnUnPiso extends JPanel {
      * @param asientos ArrayList de asientos
      * @param piso String con el numero de piso del bus
      */
-    public AsientosEnUnPiso(ArrayList<Asiento> asientos, String piso, Color color) {
+    public AsientosEnUnPiso(ArrayList<Asiento> asientos, String piso) {
         this.asientos = asientos;
         //Creacion de arreglo gráfico
         this.asientosgraficos = new ArrayList<>();
-        this.setBackground(color);
+        this.setBackground(Color.BLACK);
         for(Asiento asiento: asientos){
             ImageAsiento asientoGrafico = new ImageAsiento(asiento , asientosSeleccionados);
             asientosgraficos.add(asientoGrafico);
@@ -42,6 +38,7 @@ public class AsientosEnUnPiso extends JPanel {
         pasillo.setLayout(new GridLayout(asientos.size()/3, 1));
         columna3.setLayout(new GridLayout(asientos.size()/3, 1));
         Image pasilloImage = new ImageIcon(getClass().getResource("/pasillo.png")).getImage().getScaledInstance(20,20, Image.SCALE_SMOOTH);
+
         //Se agregan los asientos al panel contenedor
         for(int i = 0; i < asientosgraficos.size(); i++){
             columna1.add(asientosgraficos.get(i));
