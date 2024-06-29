@@ -24,7 +24,7 @@ public class AsientosEnUnPiso extends JPanel {
         this.asientosgraficos = new ArrayList<>();
         this.setBackground(Color.BLACK);
         for(Asiento asiento: asientos){
-            ImageAsiento asientoGrafico = new ImageAsiento(asiento , asientosSeleccionados);
+            ImageAsiento asientoGrafico = new ImageAsiento(asiento , asientosSeleccionados,menuInformacion);
             asientosgraficos.add(asientoGrafico);
         }
 

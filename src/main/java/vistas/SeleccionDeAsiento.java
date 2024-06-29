@@ -17,6 +17,8 @@ public class SeleccionDeAsiento extends JPanel {
     private Cliente cliente;
     private Bus bus;
     private CambioPanelListener listener;
+    private MenuInformacion menuInformacion;
+    private ArrayList<AsientosEnUnPiso> arregloPisos = new ArrayList<>();
 
     /**
      * Constructor de la clase SeleccionDeAsiento
@@ -65,20 +67,32 @@ public class SeleccionDeAsiento extends JPanel {
 
         datosPersonales = new DatosPersonales();
 
+
+
+        menuInformacion = new MenuInformacion(bus, arregloPisos);
+        if (bus.getClass() == UnPiso.class) {
+            asientosDelBus = bus.getAsientos(1);
+            pisoUno = new AsientosEnUnPiso(asientosDelBus, "Piso 1", Color.PINK, menuInformacion);
+            add(pisoUno);
+            arregloPisos.add(pisoUno);
+        } else {
+            asientosDelBus = bus.getAsientos(1);
+            pisoUno = new AsientosEnUnPiso(asientosDelBus, "Piso 1", Color.PINK, menuInformacion);
+            asientosDelBus = bus.getAsientos(2);
+            pisoDos = new AsientosEnUnPiso(asientosDelBus, "Piso 2", Color.cyan, menuInformacion);
+            add(pisoUno);
+            add(pisoDos);
+            arregloPisos.add(pisoUno);
+            arregloPisos.add(pisoDos);
+        }
+
+
+        add(menuInformacion);
         add(botonCompra);
         add(datosPersonales);
 
-        if (bus.getClass() == UnPiso.class) {
-            asientosDelBus = bus.getAsientos(1);
-            pisoUno = new AsientosEnUnPiso(asientosDelBus, "Piso 1");
-            add(pisoUno);
-        } else {
-            asientosDelBus = bus.getAsientos(1);
-            pisoUno = new AsientosEnUnPiso(asientosDelBus, "Piso 1");
-            asientosDelBus = bus.getAsientos(2);
-            pisoDos = new AsientosEnUnPiso(asientosDelBus, "Piso 2");
-            add(pisoUno);
-            add(pisoDos);
+        for(AsientosEnUnPiso Asien: arregloPisos){
+            add(Asien);
         }
     }
 
@@ -87,6 +101,7 @@ public class SeleccionDeAsiento extends JPanel {
      * @throws AsientoNoSeleccionadoException Excepción que se lanza si no se selecciona ningún asiento.
      * @throws DatosVaciosException Excepción que se lanza si no se ingresan los datos personales.
      */
+
     private void comprarPasajes() throws AsientoNoSeleccionadoException, DatosVaciosException {
         if (bus.getClass() == UnPiso.class) {
             asientosSeleccionados.addAll(pisoUno.getAsientosSeleccionados());

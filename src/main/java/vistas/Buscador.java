@@ -36,7 +36,6 @@ public class Buscador extends JPanel {
      * @param listener Listener que se encargará de cambiar de panel.
      */
     public Buscador(CambioPanelListener listener) {
-        this.setOpaque(false);
         this.listener = listener;
         setLayout(new FlowLayout());
 

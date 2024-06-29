@@ -1,6 +1,7 @@
 package vistas;
 
 import modelos.Asiento;
+import modelos.TipoAsiento;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,16 +20,16 @@ public class ImageAsiento extends JPanel implements MouseListener {
     private JLabel label;
     private boolean seleccionado;
     private JWindow ventanita;
-
+    private MenuInformacion menuInformacion;
     /**
      * Constructor de la clase ImageAsiento
      * @param asiento Asiento a mostrar
      * @param asientosSeleccionados ArrayList con los asientos seleccionados
      */
-    public ImageAsiento(Asiento asiento, ArrayList<Integer> asientosSeleccionados) {
+    public ImageAsiento(Asiento asiento, ArrayList<Integer> asientosSeleccionados, MenuInformacion menuInformacion){
         int ancho = 30;
         int alto = 30;
-
+        this.menuInformacion = menuInformacion;
         this.asiento = asiento;
         this.seleccionado = false; // Inicialmente no seleccionado
         this.asientosSeleccionados = asientosSeleccionados;
@@ -75,6 +76,7 @@ public class ImageAsiento extends JPanel implements MouseListener {
                 asientosSeleccionados.remove(asiento.getNumero());
             }
         }
+        menuInformacion.actualizarInformacion();
     }
 
     @Override
