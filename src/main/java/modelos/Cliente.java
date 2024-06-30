@@ -5,7 +5,6 @@ import java.util.ArrayList;
  * Clase que representa un cliente.
  */
 public class Cliente {
-    //private ArrayList<Integer> numAsientos;
     private ArrayList<Pasaje> pasajes = new ArrayList<>();
     /**
      * Constructor de la clase Cliente.

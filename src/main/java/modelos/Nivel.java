@@ -34,18 +34,7 @@ public class Nivel<T extends Asiento> {
             return asientos.get(numAsiento-1);
         }
     }
-    /**
-     * Método que retorna un asiento sin comprarlo.
-     * @param numAsiento Número del asiento.
-     * @return Asiento.
-     */
-    public T getAsiento(int numAsiento){
-        if(asientos.isEmpty()){
-            return null;
-        }else{
-            return asientos.get(numAsiento-1);
-        }
-    }
+
     /**
      * Método que retorna la cantidad de asientos disponibles en el nivel.
      * @return Cantidad de asientos disponibles.
