@@ -74,7 +74,12 @@ public class ImageAsiento extends JPanel implements MouseListener {
             if (seleccionado) {
                 asientosSeleccionados.add(asiento.getNumero());
             } else {
-                asientosSeleccionados.remove(asiento.getNumero());
+                for(int i = 0; i < asientosSeleccionados.size(); i++){
+                    if(asientosSeleccionados.get(i) == asiento.getNumero()){
+                        asientosSeleccionados.remove(i);
+                    }
+                }
+                //asientosSeleccionados.remove(asiento.getNumero());
             }
         }
         menuInformacion.actualizarInformacion();
