@@ -72,14 +72,14 @@ public class SeleccionDeAsiento extends JPanel {
         menuInformacion = new MenuInformacion(bus, arregloPisos);
         if (bus.getClass() == UnPiso.class) {
             asientosDelBus = bus.getAsientos(1);
-            pisoUno = new AsientosEnUnPiso(asientosDelBus, "Piso 1", Color.PINK, menuInformacion);
+            pisoUno = new AsientosEnUnPiso(asientosDelBus, "Piso 1", menuInformacion);
             add(pisoUno);
             arregloPisos.add(pisoUno);
         } else {
             asientosDelBus = bus.getAsientos(1);
-            pisoUno = new AsientosEnUnPiso(asientosDelBus, "Piso 1", Color.PINK, menuInformacion);
+            pisoUno = new AsientosEnUnPiso(asientosDelBus, "Piso 1", menuInformacion);
             asientosDelBus = bus.getAsientos(2);
-            pisoDos = new AsientosEnUnPiso(asientosDelBus, "Piso 2", Color.cyan, menuInformacion);
+            pisoDos = new AsientosEnUnPiso(asientosDelBus, "Piso 2", menuInformacion);
             add(pisoUno);
             add(pisoDos);
             arregloPisos.add(pisoUno);

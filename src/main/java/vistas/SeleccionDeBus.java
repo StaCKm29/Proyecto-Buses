@@ -25,10 +25,7 @@ public class SeleccionDeBus extends JPanel {
         JPanel panelSeleccionDeBus = new JPanel(new BorderLayout());
 
         busesDisponibles = new JList<>(buses.toArray(new Bus[0]));
-       // JButton seleccionar = new JButton("Seleccionar");
-
         panelSeleccionDeBus.add(new JScrollPane(busesDisponibles), BorderLayout.CENTER);
-        //panelSeleccionDeBus.add(seleccionar, BorderLayout.SOUTH);
 
         // Añadir panel de selección de bus al cardPanel
         cardPanel.add(panelSeleccionDeBus, "SeleccionDeBus");

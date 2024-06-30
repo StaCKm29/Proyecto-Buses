@@ -64,9 +64,4 @@ public class MenuInformacion extends JPanel{
         }
         montoTotal.setText("Monto Total: " + aux);
     }
-
-    @Override
-    public void paintComponent(Graphics g){
-        super.paintComponent(g);
-    }
 }

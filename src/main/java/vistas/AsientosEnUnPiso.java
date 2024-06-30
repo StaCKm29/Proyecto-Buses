@@ -18,7 +18,7 @@ public class AsientosEnUnPiso extends JPanel {
      * @param asientos ArrayList de asientos
      * @param piso String con el numero de piso del bus
      */
-    public AsientosEnUnPiso(ArrayList<Asiento> asientos, String piso) {
+    public AsientosEnUnPiso(ArrayList<Asiento> asientos, String piso, MenuInformacion menuInformacion) {
         this.asientos = asientos;
         //Creacion de arreglo gráfico
         this.asientosgraficos = new ArrayList<>();
