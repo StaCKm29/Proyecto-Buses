@@ -9,7 +9,6 @@ import java.util.ArrayList;
  * Clase AsientosEnUnPiso que se utilizará para mostrar los asientos de un piso de un bus.
  */
 public class AsientosEnUnPiso extends JPanel {
-    private ArrayList<Asiento> asientos;
     private ArrayList<ImageAsiento>  asientosgraficos;
     private ArrayList<Integer> asientosSeleccionados = new ArrayList<>();
 
@@ -20,7 +19,6 @@ public class AsientosEnUnPiso extends JPanel {
      * @param menuInformacion MenuInformacion que se encargará de mostrar la información de los asientos
      */
     public AsientosEnUnPiso(ArrayList<Asiento> asientos, String piso, MenuInformacion menuInformacion) {
-        this.asientos = asientos;
         //Creacion de arreglo gráfico
         this.asientosgraficos = new ArrayList<>();
         this.setBackground(Color.BLACK);
@@ -78,10 +76,4 @@ public class AsientosEnUnPiso extends JPanel {
     public ArrayList<Integer> getAsientosSeleccionados(){
         return asientosSeleccionados;
     }
-
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-    }
-
 }

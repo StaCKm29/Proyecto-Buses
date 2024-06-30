@@ -8,7 +8,7 @@ import java.util.ArrayList;
  */
 public class ChillanSantiago implements EstrategiaRecorrido{
     /**
-     *
+     * Constructor del viaje entre Chillán y Santiago.
      * @param buses
      * @param busFactory
      * @param busFactory2

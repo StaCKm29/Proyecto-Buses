@@ -1,7 +1,6 @@
 package vistas;
 
 import modelos.Asiento;
-import modelos.TipoAsiento;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,7 +8,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 /**
- * Clase ImageAsiento que se utilizará para mostrar un asiento gráficamente
+ * Clase ImageAsiento que se utilizará para mostrar un asiento gráficamente.
  */
 public class ImageAsiento extends JPanel implements MouseListener {
     private ArrayList<Integer> asientosSeleccionados;
@@ -21,26 +20,27 @@ public class ImageAsiento extends JPanel implements MouseListener {
     private boolean seleccionado;
     private JWindow ventanita;
     private MenuInformacion menuInformacion;
+
     /**
-     * Constructor de la clase ImageAsiento
-     * @param asiento Asiento a mostrar
-     * @param asientosSeleccionados ArrayList con los asientos seleccionados
-     * @param menuInformacion MenuInformacion que se encargará de mostrar la información de los asientos
+     * Constructor de la clase ImageAsiento.
+     * @param asiento Asiento a mostrar.
+     * @param asientosSeleccionados ArrayList con los asientos seleccionados.
+     * @param menuInformacion MenuInformacion que se encargará de mostrar la información de los asientos.
      */
     public ImageAsiento(Asiento asiento, ArrayList<Integer> asientosSeleccionados, MenuInformacion menuInformacion){
         int ancho = 30;
         int alto = 30;
         this.menuInformacion = menuInformacion;
         this.asiento = asiento;
-        this.seleccionado = false; // Inicialmente no seleccionado
+        this.seleccionado = false; // Inicialmente no seleccionado.
         this.asientosSeleccionados = asientosSeleccionados;
 
-        // Cargar las imágenes de los iconos
+        // Cargar las imágenes de los iconos.
         iconDisponible = new ImageIcon(new ImageIcon(getClass().getResource("/AsientoDisponible.png")).getImage().getScaledInstance(ancho, alto, Image.SCALE_DEFAULT));
         iconOcupado = new ImageIcon(new ImageIcon(getClass().getResource("/AsientoOcupado.png")).getImage().getScaledInstance(ancho, alto, Image.SCALE_DEFAULT));
         iconSeleccionado = new ImageIcon(new ImageIcon(getClass().getResource("/AsientoSeleccionado.png")).getImage().getScaledInstance(ancho, alto, Image.SCALE_DEFAULT));
 
-        // Configurar el icono inicial basado en el estado del asiento
+        // Configurar el icono inicial basado en el estado del asiento.
         label = new JLabel();
         updateIcon();
 
@@ -62,15 +62,15 @@ public class ImageAsiento extends JPanel implements MouseListener {
     }
 
     /**
-     * Método que modifica el ArrayList de los asientos seleccionados si es que el asiento es seleccionado
+     * Método que modifica el ArrayList de los asientos seleccionados si es que el asiento es seleccionado.
      * o deseleccionado y que a su vez actualiza la informacion de MenuInformacion.
      * @param e Evento de mouse.
      */
     @Override
     public void mouseClicked(MouseEvent e) {
         if (!asiento.getEstado()) {
-            seleccionado = !seleccionado; // Alternar el estado seleccionado
-            updateIcon(); // Actualizar el icono en función del nuevo estado
+            seleccionado = !seleccionado; // Alternar el estado seleccionado.
+            updateIcon(); // Actualizar el icono en función del nuevo estado.
             if (seleccionado) {
                 asientosSeleccionados.add(asiento.getNumero());
             } else {
@@ -95,7 +95,10 @@ public class ImageAsiento extends JPanel implements MouseListener {
     @Override
     public void mouseEntered(MouseEvent e) {
         ventanita = new JWindow();
-        JLabel info = new JLabel("Asiento " + asiento.getNumero() + " - Tipo: " + asiento.getTipo());
+
+        JLabel info = new JLabel("Asiento " + asiento.getNumero() + " - Tipo: " + asiento.getTipo()
+        + " - Precio: " + menuInformacion.getBus().getPrecioTotal(asiento.getNumero()));
+
         ventanita.getContentPane().add(info);
         ventanita.pack();
         Point cursor = MouseInfo.getPointerInfo().getLocation();
@@ -104,7 +107,7 @@ public class ImageAsiento extends JPanel implements MouseListener {
     }
 
     /**
-     * Método que cierra la ventana de información al salir del asiento
+     * Método que cierra la ventana de información al salir del asiento.
      * @param e Evento de mouse.
      */
     @Override

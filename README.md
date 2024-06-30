@@ -13,7 +13,7 @@ Una vez teniendo clonado el repositorio:
 ### Diagrama de clases UML:![DiagramaDeClases.png](DiagramaDeClases.png)
 ### Diagrama de casos de uso: ![DiagramaDeCasosDeUso.png](CasosUso.png)
 ### Patrones de diseño utilizados:
--Patron Factory: Se utilizó en las clase BusFactory y las clases que la implementaron son DosPisosFactory y UnPisoFactory para crear los buses de dos pisos y de un piso respectivamente. Su implementacion fue en orden de simplificar
+- Abstract Factory : Se utilizó en las clase BusFactory y las clases que la implementaron son DosPisosFactory y UnPisoFactory para crear los buses de dos pisos y de un piso respectivamente. Su implementacion fue en orden de simplificar
 la creacion de los buses y para que el codigo sea mas legible.
 -Patron Strategy: Se utilizó en la clase Estrategia recorrido y se implementó en todas las clases dentro de el paquete "viajes". Se utilizó para crear un arreglo de buses utilizando a su vez BusFactory,
 de esta manera, al realizar la eleccion de un bus al momento de viajar, la cantidad y los tipos de buses pueden variar dependiendo del recorrido escogido, a su vez que 

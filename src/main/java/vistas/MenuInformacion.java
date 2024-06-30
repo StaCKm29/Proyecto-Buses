@@ -8,7 +8,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 /**
- * Clase MenuInformacion que se utilizará para mostrar informacion relevante sobre la cantidad de asientos y el monto a pagar
+ * Clase MenuInformacion que se utilizará para mostrar informacion relevante sobre la cantidad de asientos y el monto a pagar.
  */
 public class MenuInformacion extends JPanel{
     private JLabel asientosTotales;
@@ -19,9 +19,9 @@ public class MenuInformacion extends JPanel{
     private Bus bus;
     private ArrayList<AsientosEnUnPiso> arregloPisos;
     /**
-     * Constructor de la clase MenuInformacion
-     * @param bus Bus a mostrar información
-     * @param arregloPisos ArrayList de AsientosEnUnPiso
+     * Constructor de la clase MenuInformacion.
+     * @param bus Bus a mostrar información.
+     * @param arregloPisos ArrayList de AsientosEnUnPiso.
      */
     public MenuInformacion(Bus bus, ArrayList<AsientosEnUnPiso> arregloPisos){
         this.bus = bus;
@@ -45,7 +45,7 @@ public class MenuInformacion extends JPanel{
         actualizarInformacion();
     }
     /**
-     * Método que actualiza la información de los asientos
+     * Método que actualiza la información de los asientos.
      */
     public void actualizarInformacion(){
 
@@ -71,5 +71,13 @@ public class MenuInformacion extends JPanel{
             aux = aux + bus.getPrecioTotal(i);
         }
         montoTotal.setText("Monto Total: " + aux);
+    }
+
+    /**
+     * Método que retorna el bus.
+     * @return Bus.
+     */
+    public Bus getBus(){
+        return bus;
     }
 }

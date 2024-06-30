@@ -40,8 +40,8 @@ public class Buscador extends JPanel {
         setLayout(new FlowLayout());
 
         buscar = new JButton("Buscar");
-        menuOrigen = new MenuLocalidad();
-        menuDestino = new MenuLocalidad();
+        menuOrigen = new MenuLocalidad("Origen");
+        menuDestino = new MenuLocalidad("Destino");
         seleccionar = new JButton("Seleccionar");
         seleccionar.addActionListener(e -> listener.cambiarASeleccionAsiento());
 
