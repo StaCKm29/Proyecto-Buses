@@ -16,8 +16,8 @@ public class MenuLocalidad extends JPanel implements ItemListener {
     /**
      * Constructor de la clase MenuLocalidad
      */
-    public MenuLocalidad() {
-        JLabel nombre = new JLabel("Origen: ");
+    public MenuLocalidad(String titulo) {
+        JLabel nombre = new JLabel(titulo);
         add(nombre);
         opciones = new Choice();
         opciones.add("Seleccione una localidad");
