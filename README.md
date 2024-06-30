@@ -11,7 +11,7 @@ Una vez teniendo clonado el repositorio:
 - Posteriormente se dirigirá a la segunda "pestaña" donde podrá seleccionar los asientos que desee.
 - Finalmente, rellenar con sus datos y esperar a que se confirme el pago. 
 ### Diagrama de clases UML:![DiagramaDeClases.png](DiagramaDeClases.png)
-### Diagrama de casos de uso: ![DiagramaDeCasosDeUso.png](DiagramaDeCasosDeUso.png)
+### Diagrama de casos de uso: ![DiagramaDeCasosDeUso.png](CasosUso.png)
 ### Patrones de diseño utilizados:
 -Patron Factory: Se utilizó en las clase BusFactory y las clases que la implementaron son DosPisosFactory y UnPisoFactory para crear los buses de dos pisos y de un piso respectivamente. Su implementacion fue en orden de simplificar
 la creacion de los buses y para que el codigo sea mas legible.
