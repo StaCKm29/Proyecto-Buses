@@ -25,6 +25,7 @@ public class ImageAsiento extends JPanel implements MouseListener {
      * Constructor de la clase ImageAsiento
      * @param asiento Asiento a mostrar
      * @param asientosSeleccionados ArrayList con los asientos seleccionados
+     * @param menuInformacion MenuInformacion que se encargará de mostrar la información de los asientos
      */
     public ImageAsiento(Asiento asiento, ArrayList<Integer> asientosSeleccionados, MenuInformacion menuInformacion){
         int ancho = 30;
@@ -62,7 +63,7 @@ public class ImageAsiento extends JPanel implements MouseListener {
 
     /**
      * Método que modifica el ArrayList de los asientos seleccionados si es que el asiento es seleccionado
-     * o deseleccionado.
+     * o deseleccionado y que a su vez actualiza la informacion de MenuInformacion.
      * @param e Evento de mouse.
      */
     @Override

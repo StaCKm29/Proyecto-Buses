@@ -17,6 +17,7 @@ public class AsientosEnUnPiso extends JPanel {
      * Constructor de la clase AsientosEnUnPiso
      * @param asientos ArrayList de asientos
      * @param piso String con el numero de piso del bus
+     * @param menuInformacion MenuInformacion que se encargará de mostrar la información de los asientos
      */
     public AsientosEnUnPiso(ArrayList<Asiento> asientos, String piso, MenuInformacion menuInformacion) {
         this.asientos = asientos;

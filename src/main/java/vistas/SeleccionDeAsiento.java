@@ -66,9 +66,6 @@ public class SeleccionDeAsiento extends JPanel {
         });
 
         datosPersonales = new DatosPersonales();
-
-
-
         menuInformacion = new MenuInformacion(bus, arregloPisos);
         if (bus.getClass() == UnPiso.class) {
             asientosDelBus = bus.getAsientos(1);
