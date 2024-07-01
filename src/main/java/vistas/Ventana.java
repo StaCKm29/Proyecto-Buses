@@ -19,9 +19,8 @@ public class Ventana extends JFrame {
         add(panelPrincipal, BorderLayout.CENTER);
         setContentPane(panelPrincipal);
         this.setTitle("Gestor de Ventas de Pasajes");
-        setSize(700, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setVisible(true);
     }
 }
