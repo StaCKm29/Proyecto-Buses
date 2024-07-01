@@ -15,11 +15,11 @@ Una vez teniendo clonado el repositorio:
 ### Diagrama de clases UML:![DiagramaClases.png](src/main/resources/DiagramaClases.png)
 ### Diagrama de casos de uso: ![DiagramaDeCasosDeUso.png](src/main/resources/CasosUso.png)
 ### Patrones de diseño utilizados:
-- Abstract Factory : Se creó la interfaz BusFactory y las clases que la implementaron 
-son DosPisosFactory y UnPisoFactory para crear los buses de dos pisos y de un piso 
-respectivamente. Su implementacion fue en orden de simplificar
-la creacion de los buses ya que debiamos implementar una diversa cantidad de estos, 
-- dependiendo del recorrido, además, para que el codigo sea mas legible.
+- Abstract Factory : Se creó la interfaz BusFactory y las clases que la implementaron
+  son DosPisosFactory y UnPisoFactory para crear los buses de dos pisos y de un piso
+  respectivamente. Su implementación fue en orden de simplificar
+  la creación de los buses ya que debíamos implementar una diversa cantidad de estos, dependiendo del recorrido, además, para que el código sea más legible.
+
 
 ### Interfaz de usuario:
 - Primera pestaña: ![img.png](src/main/resources/pestañaUno.png)
