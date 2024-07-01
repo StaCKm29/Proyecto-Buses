@@ -30,7 +30,7 @@ Una vez teniendo clonado el repositorio:
 Desde un principio, acordamos como grupo empezar por el diagrama de casos de uso, para después pasar a
 la creación del UML de las clases "lógicas", intentando que fuera
 lo más completo posible. Una vez teniendo una estructura básica, comenzamos con la escritura de código y la creación del package "modelos",
-Lo fuimos desarrollando a profundidad y con cautelosidad. Es en esta etapa donde decidimos que lo mejor sería implementar el patrón de diseño
+lo fuimos desarrollando a profundidad y con cautelosidad. Es en esta etapa donde decidimos que lo mejor sería implementar el patrón de diseño
 Abstract Factory para la creación de diversos tipos de buses (tanto en cantidad de pisos como en la variedad de asientos en él) en diferentes recorridos.
 A medida que se creaban métodos complejos, realizábamos test unitarios.
 
