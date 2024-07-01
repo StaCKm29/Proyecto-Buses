@@ -11,6 +11,7 @@ Una vez teniendo clonado el repositorio:
 - Luego debe escoger un bus. 
 - Posteriormente se dirigirá a la segunda "pestaña" donde podrá seleccionar los asientos que desee.
 - Finalmente, rellenar con sus datos y esperar a que se confirme el pago.
+- Importante mencionar, que los pasajes de compras exitosas, se almacenan en la carpeta resources del proyecto. 
 
 ### Diagrama de clases UML:![DiagramaClases.png](src/main/resources/DiagramaClases.png)
 ### Diagrama de casos de uso: ![DiagramaDeCasosDeUso.png](src/main/resources/CasosUso.png)
